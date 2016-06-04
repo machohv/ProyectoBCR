@@ -1,0 +1,35 @@
+﻿<div class="page-header">
+    <h1>Ver Clientes Físicos</h1>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Primer Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Profesión</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="persona in personas">
+                <td>{{persona.Cedula}}</td>
+                <td>{{persona.PrimerNombre}}</td>
+                <td>{{persona.SegundoNombre}}</td>
+                <td>{{persona.PrimerApellido}}</td>
+                <td>{{persona.SegundoApellido}}</td>
+                <td>{{persona.Profesion}}</td>
+                <td>{{persona.Correo}}</td>
+                <!--<td class="text-right">
+            <button class="btn btn-danger" ng-click="deletePersona(persona)">X</button>
+        </td>-->
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<input type="text" required ng-model="newPersona" />
+    <a href="#" class="btn btn-primary" ng-click="addPersona()">Add Persona</a>-->
+</div>
