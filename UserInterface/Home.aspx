@@ -12,7 +12,7 @@
 </head>
 <body >
     <div id="wrapper">
-        <H1>ASDF</H1>
+        
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
