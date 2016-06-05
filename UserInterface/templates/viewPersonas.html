@@ -2,30 +2,39 @@
     <h1>Ver Clientes Físicos</h1>
 </div>
 <div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Cédula</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
+                <th>Nombre</th>
                 <th>Profesión</th>
                 <th>Correo</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="persona in personas">
+
+            <tr ng-repeat="persona in personas | filter: searchStr">
                 <td>{{persona.Cedula}}</td>
-                <td>{{persona.PrimerNombre}}</td>
-                <td>{{persona.SegundoNombre}}</td>
-                <td>{{persona.PrimerApellido}}</td>
-                <td>{{persona.SegundoApellido}}</td>
+                <td>{{persona.PrimerNombre + " " + persona.SegundoNombre + " " + persona.PrimerApellido + " " + persona.SegundoApellido }}</td>
                 <td>{{persona.Profesion}}</td>
                 <td>{{persona.Correo}}</td>
-                <!--<td class="text-right">
-            <button class="btn btn-danger" ng-click="deletePersona(persona)">X</button>
-        </td>-->
+
+                <td >
+                    <!--<button class="btn btn-danger" ng-click="deletePersona(persona)">X</button>-->
+                </td>
             </tr>
         </tbody>
     </table>

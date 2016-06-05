@@ -15,8 +15,8 @@
                 <a href="{{service.url}}">{{service.name}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" ng-if="service.subMenu && service.subMenu.length > 0">
                     <li ng-repeat="subService in service.subMenu | filter: searchStr" ng-click="subService.active = true" ng-show="service.active">
-                        <a href="{{subService.url}}">{{subService.name}} <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level" >
+                        <a href="{{subService.url}}">{{subService.name}} <span class="fa arrow" ng-if="subService.subMenu && subService.subMenu.length > 0"></span></a>
+                        <ul class="nav nav-third-level" ng-if="subService.subMenu && subService.subMenu.length > 0">
                             <li ng-repeat="subService2 in subService.subMenu" ng-show="subService.active">
                                 <a href="{{subService2.url}}">{{subService2.name}}</a>
                             </li>

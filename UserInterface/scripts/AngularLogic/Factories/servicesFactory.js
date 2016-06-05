@@ -55,40 +55,220 @@
             url: "#",
             subMenu: [
                 {
-                    name: "Crédito",
+                    name: "Crédito empresarial",
                     url: "#",
                     subMenu: [
                         {
-                            name: "Cuenta empresariales",
+                            name: "Ver Cuentas de Crédito Empresariales",
                             url: "#"
                         },
                         {
-                            name: "Cuenta personales",
+                            name: "Agregar Cuenta de Crédito Empresarial",
                             url: "#"
                         },
+                        {
+                            name: "Editar Cuenta de Crédito Empresarial",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Cuenta de Crédito Empresarial",
+                            url: "#"
+                        }
                     ]
                 },
                 {
-                    name: "Débito",
+                    name: "Crédito personal",
                     url: "#",
                     subMenu: [
                         {
-                            name: "Cuenta corriente",
+                            name: "Ver Cuentas de Crédito Personales",
                             url: "#"
                         },
                         {
-                            name: "Cuenta de ahorro",
+                            name: "Agregar Cuenta de Crédito Personal",
+                            url: "#"
+                        },
+                        {
+                            name: "Editar Cuenta de Crédito Personal",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Cuenta de Crédito Personal",
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    name: "Débito Corriente",
+                    url: "#",
+                    subMenu: [
+                        {
+                            name: "Ver Cuentas de Débito Corrientes",
+                            url: "#"
+                        },
+                        {
+                            name: "Agregar Cuenta de Débito Corriente",
+                            url: "#"
+                        },
+                        {
+                            name: "Editar Cuenta de Débito Corriente",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Cuenta de Débito Corriente",
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    name: "Débito de Ahorro",
+                    url: "#",
+                    subMenu: [
+                        {
+                            name: "Ver Cuentas de Débito de Ahorro",
+                            url: "#"
+                        },
+                        {
+                            name: "Agregar Cuenta de Débito de Ahorro",
+                            url: "#"
+                        },
+                        {
+                            name: "Editar Cuenta de Débito de Ahorro",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Cuenta de Débito de Ahorro",
+                            url: "#"
+                        }
+                    ]
+                },
+                
+            ]
+        },
+        {
+            name: "Fondos de Inversión",
+            url: "#",
+            subMenu: [
+                {
+                    name: "Fondos Mercado Dinero",
+                    url: "#",
+                    subMenu: [
+                        {
+                            name: "Ver Fondos Mercado Dinero",
+                            url: "#/viewPersonas"
+                        },
+                        {
+                            name: "Agregar Fondos Mercado Dinero",
+                            url: "#/addPersona"
+                        },
+                        {
+                            name: "Editar Fondos Mercado Dinero",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Fondos Mercado Dinero",
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    name: "Fondos de Ingreso",
+                    url: "#",
+                    subMenu: [
+                        {
+                            name: "Ver Fondos de Ingreso",
+                            url: "#"
+                        },
+                        {
+                            name: "Agregar Fondos de Ingreso",
+                            url: "#"
+                        },
+                        {
+                            name: "Editar Fondos de Ingreso",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Fondos de Ingreso",
+                            url: "#"
+                        }
+                    ]
+                },
+                {
+                    name: "Fondos Inmoviliarios",
+                    url: "#",
+                    subMenu: [
+                        {
+                            name: "Ver Fondos Inmoviliarios",
+                            url: "#"
+                        },
+                        {
+                            name: "Agregar Fondos Inmoviliarios",
+                            url: "#"
+                        },
+                        {
+                            name: "Editar Fondos Inmoviliarios",
+                            url: "#"
+                        },
+                        {
+                            name: "Eliminar Fondos Inmoviliarios",
                             url: "#"
                         }
                     ]
                 }
             ]
         },
-		//{
-		//    name: "Valores",
-		//    url: "#",
-		//    subMenu: []
-		//},
+		{
+		    name: "Pensiones",
+		    url: "#",
+		    subMenu: [
+                {
+                    name: "Ver Pensiones",
+                    url: "#",
+                    subMenu: []
+                },
+                {
+                    name: "Agregar Pensión",
+                    url: "#",
+                    subMenu: []
+                },
+                {
+                    name: "Editar Pensión",
+                    url: "#",
+                    subMenu: []
+                },
+                {
+                    name: "Eliminar Pensión",
+                    url: "#",
+                    subMenu: []
+                }
+		    ]
+		},
+        {
+            name: "Seguros",
+            url: "#",
+            subMenu: [
+                {
+                    name: "Ver Seguros",
+                    url: "#/addPersona",
+                    subMenu: []
+                },
+                {
+                    name: "Agregar Seguro",
+                    url: "#",
+                    subMenu: []
+                },
+                {
+                    name: "Editar Seguro",
+                    url: "#",
+                    subMenu: []
+                },
+                {
+                    name: "Eliminar Seguro",
+                    url: "#",
+                    subMenu: []
+                }
+            ]
+        }
 		//{
 		//    name: "Fondos de inversión",
 		//    url: "#",
