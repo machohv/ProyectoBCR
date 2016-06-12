@@ -26,8 +26,7 @@ namespace DataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=127.0.0.1\\SQL2014;Initial Catalog=BancoCostaRica;Integrated Security=" +
-            "True")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"Server=tcp:bancobcr.database.windows.net,1433;Data Source=bancobcr.database.windows.net;Initial Catalog=BancoCostaRica;Persist Security Info=False;User ID=bcr;Password=StoredProcedure1$;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

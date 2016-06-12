@@ -22,18 +22,18 @@ namespace DataAccess
 
 
 
-            new DAOEmpleado().AddEmpleado(new TOEmpleado
-            {
-                Cedula = "116560680",
-                Correo = "jose.hernandez@ucrso.info",
-                Password = "StoredProcedure",
-                PrimerNombre = "Jose",
-                SegundoNombre = "Andres",
-                PrimerApellido = "Hernandez",
-                SegundoApellido = "Vargas",
-                Profesion = "Developer",
-                Salario = 1000000
-            });
+            //new DAOEmpleado().AddEmpleado(new TOEmpleado
+            //{
+            //    Cedula = "116560680",
+            //    Correo = "jose.hernandez@ucrso.info",
+            //    Password = "StoredProcedure",
+            //    PrimerNombre = "Jose",
+            //    SegundoNombre = "Andres",
+            //    PrimerApellido = "Hernandez",
+            //    SegundoApellido = "Vargas",
+            //    Profesion = "Developer",
+            //    Salario = 1000000
+            //});
 
             //TOEmpleado e = new DAOEmpleado().getEmpleado("116560680");
             //if (e == null)
@@ -44,6 +44,24 @@ namespace DataAccess
             //{
             //    MessageBox.Show(e.PrimerApellido);
             //}
+
+
+
+            //Pruebas agregar de cuenta credito personal
+            //new DAOCuentaCreditoPersonal().addCuentaCreditoPersonal(new TOTarjeta
+            //{
+            //    imgSrc = "image",
+            //    CasaMatriz = "MasterCard",
+            //    Descripcion = "bla bla bla",
+            //    Cliente = new DAOPersona().getPersona("116560680"),
+            //    Cuenta = new TOCuentaCreditoPersonal {
+            //        Divisa = "divisa",
+            //        Taza = 0.30m,
+            //        Plazo=60,
+            //        Cliente = new DAOPersona().getPersona("116560680"),
+            //        Categoria = "internacional"
+            //    }
+            //});
 
         }
     }

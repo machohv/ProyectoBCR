@@ -48,10 +48,14 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TOCuenta.cs" />
+    <Compile Include="TOCuentaCredito.cs" />
+    <Compile Include="TOCuentaCreditoPersonal.cs" />
     <Compile Include="TODireccion.cs" />
     <Compile Include="TOEmpleado.cs" />
     <Compile Include="TOEntidad.cs" />
     <Compile Include="TOPersona.cs" />
+    <Compile Include="TOTarjeta.cs" />
     <Compile Include="TOTelefono.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

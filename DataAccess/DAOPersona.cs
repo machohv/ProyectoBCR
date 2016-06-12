@@ -135,5 +135,54 @@ namespace DataAccess
                 connection.Close();
             }
         }
+
+        public void updatePersonas(TOPersona p)
+        {
+            SqlCommand command = new SqlCommand("EditPersona", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Cedula", p.Cedula);
+            command.Parameters.AddWithValue("@Correo", p.Correo);
+            command.Parameters.AddWithValue("@Password", p.Password);
+            command.Parameters.AddWithValue("@PrimerNombre", p.PrimerNombre);
+            command.Parameters.AddWithValue("@SegundoNombre", p.SegundoNombre);
+            command.Parameters.AddWithValue("@PrimerApellido", p.PrimerApellido);
+            command.Parameters.AddWithValue("@SegundoApellido", p.SegundoApellido);
+            command.Parameters.AddWithValue("@Profesion", p.Profesion);
+
+            
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            command.ExecuteNonQuery();
+
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+        }
+
+        public void deletePersona(string cedula)
+        {
+            SqlCommand command = new SqlCommand("DeletePersona", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Cedula", cedula);
+
+
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            command.ExecuteNonQuery();
+
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+        }
     }
 }

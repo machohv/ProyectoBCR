@@ -1,0 +1,49 @@
+﻿<div class="page-header">
+    <h1>Ver Cuentas Personales</h1>
+</div>
+<br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Cuenta</th>
+                <th>Tipo de Cuenta</th>
+                <th>Total en Dólares</th>
+                <th>Número de Tarjeta</th>
+                <th>Pin</th>
+                <th>Cédula del Portador</th>
+                <th>Nombre del Portador</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="tarjeta in tarjetas | filter: searchStr">
+                <td>{{tarjeta.Cuenta.NumeroCuenta}}</td>
+                <td>{{tarjeta.Descripcion}}</td>
+                <td>{{tarjeta.Cuenta.Balance}}</td>
+                <td>{{tarjeta.NumeroTarjeta}}</td>
+                <td>{{tarjeta.Pin}}</td>
+                <td>{{tarjeta.Cliente.Cedula}}</td>
+                <td>{{tarjeta.Cliente.PrimerNombre + " " + tarjeta.Cliente.SegundoNombre + " " + tarjeta.Cliente.PrimerApellido + " " + tarjeta.Cliente.SegundoApellido }}</td>
+
+               
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<input type="text" required ng-model="newPersona" />
+    <a href="#" class="btn btn-primary" ng-click="addPersona()">Add Persona</a>-->
+</div>

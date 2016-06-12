@@ -20,7 +20,8 @@ namespace UserInterface
     // [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
-        private PersonasAdministrator administrator = new PersonasAdministrator();
+        private PersonasAdministrator administratorPersonas = new PersonasAdministrator();
+        private CuentaCreditoPersonalAdministrator administradorCuentaPersonal = new CuentaCreditoPersonalAdministrator();
 
         [WebMethod]
         public string HelloWorld(string firstName)
@@ -34,7 +35,7 @@ namespace UserInterface
             string segundoApellido, string profesion, string telefono, string celular,
             string provincia, string canton, string distrito, string direccionExacta)
         {
-            administrator.AddPersona(new Persona {
+            administratorPersonas.AddPersona(new Persona {
                 Cedula = cedula,
                 Password = password,
                 Correo = correo,
@@ -61,12 +62,83 @@ namespace UserInterface
         [WebMethod]
         public void getAllPersonas()
         {
-            List<Persona> personas = administrator.getPersonas();
+            List<Persona> personas = administratorPersonas.getPersonas();
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(personas));
         }
 
+        [WebMethod]
+        public void getPersona(string cedula)
+        {
+            Persona persona = administratorPersonas.getPersona(cedula);
 
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(persona));
+        }
+
+
+        [WebMethod]
+        public string EditPersona(string cedula, string correo, string password,
+            string primerNombre, string segundoNombre, string primerApellido,
+            string segundoApellido, string profesion)
+        {
+            administratorPersonas.EditPersona(new Persona
+            {
+                Cedula = cedula,
+                Password = password,
+                Correo = correo,
+                PrimerNombre = primerNombre,
+                SegundoNombre = segundoNombre,
+                PrimerApellido = primerApellido,
+                SegundoApellido = segundoApellido,
+                Profesion = profesion
+            });
+
+            return " Se ha editado a " + primerNombre + " " + segundoNombre + " " +
+                primerApellido + " " + segundoApellido + " exitosamente";
+
+        }
+
+        [WebMethod]
+        public string DeletePersona(string cedula)
+        {
+            administratorPersonas.deletePersona(cedula);
+
+            return " Se ha eliminado al cliente exitosamente";
+
+        }
+
+        [WebMethod]
+        public string AddCuentaCreditoPersonal(string Cedula, string CasaMatriz, string Image,
+            string Descripcion, string NombrePortador, string Divisa,
+            string Tasa, string Plazo, string Categoria)
+        {
+            administradorCuentaPersonal.AddCuentaCreditoPersonal(new Tarjeta
+            {
+                CasaMatriz = CasaMatriz,
+                imgSrc = Image,
+                Descripcion = Descripcion,
+                Cuenta = new CuentaCreditoPersonal
+                {
+                    Divisa = Divisa,
+                    Taza = decimal.Parse(Tasa),
+                    Plazo = int.Parse(Plazo),
+                    Categoria = Categoria
+                },
+                Cliente = administratorPersonas.getPersona(Cedula)
+            });
+            return " Se ha agregador el servicio exitosamente";
+
+        }
+        
+        [WebMethod]
+        public void getAllCuentasCreditoPersonal()
+        {
+            List<Tarjeta> tarjetas = administradorCuentaPersonal.getCuentasCreditoPersonal();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(tarjetas));
+        }
     }
 }

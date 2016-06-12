@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cuenta.cs" />
+    <Compile Include="CuentaCredito.cs" />
+    <Compile Include="CuentaCreditoPersonal.cs" />
+    <Compile Include="CuentaCreditoPersonalAdministrator.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadosAdministrator.cs" />
@@ -55,6 +59,7 @@
     <Compile Include="PersonasAdministrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tarjeta.cs" />
     <Compile Include="Telefono.cs" />
     <Compile Include="UserVerification.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

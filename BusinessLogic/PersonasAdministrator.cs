@@ -76,5 +76,44 @@ namespace BusinessLogic
             });
         }
 
+        public void EditPersona(Persona p)
+        {
+            p.Password = Encryptor.MD5Hash(p.Password);
+            daoPersona.updatePersonas(convertToTOPersona(p));
+        }
+
+        public void deletePersona(string cedula)
+        {
+            daoPersona.deletePersona(cedula);
+        }
+
+        public TOPersona convertToTOPersona(Persona p)
+        {
+            return new TOPersona
+            {
+                Cedula = p.Cedula,
+                Password = p.Password,
+                Correo = p.Correo,
+                PrimerNombre = p.PrimerNombre,
+                SegundoNombre = p.SegundoNombre,
+                PrimerApellido = p.PrimerApellido,
+                SegundoApellido = p.SegundoApellido,
+                Profesion = p.Profesion
+            };
+        }
+        public Persona convertToPersona(TOPersona p)
+        {
+            return new Persona
+            {
+                Cedula = p.Cedula,
+                Password = p.Password,
+                Correo = p.Correo,
+                PrimerNombre = p.PrimerNombre,
+                SegundoNombre = p.SegundoNombre,
+                PrimerApellido = p.PrimerApellido,
+                SegundoApellido = p.SegundoApellido,
+                Profesion = p.Profesion
+            };
+        }
     }
 }
