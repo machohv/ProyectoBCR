@@ -1,4 +1,100 @@
 ﻿<div class="page-header">
-    <h1>Editar Cuenta Personal</h1>
+    <h1>Editar Cuenta de Crédito Personal</h1>
 </div>
 <br />
+
+<form ng-submit="fillSpaces()">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="NumeroCuenta">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br />
+<br />
+
+<form class="form-horizontal" role="form" ng-submit="submitForm()">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Pin">Pin:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Pin" placeholder="Digite el Pin" ng-model="Pin" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Cedula">Cedula:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Cedula" placeholder="Digite la cédula" ng-model="Cedula" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Balance">Balance:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Balance" placeholder="Digite el balance" ng-model="Balance" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="SaldoBloqueado">Saldo Bloqueado:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="SaldoBloqueado" placeholder="Digite el saldo bloqueado" ng-model="SaldoBloqueado">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="SaldoCongelado">Saldo Congelado:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="SaldoCongelado" placeholder="Digite el saldo congelado" ng-model="SaldoCongelado" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Taza">Taza:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Taza" placeholder="Digite la taza" ng-model="Taza">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Millas">Millas:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Millas" placeholder="Digite la cantidad de millas" ng-model="Millas" required>
+        </div>
+    </div>
+    <div class="input-group date'" id='datetimeFechaCorte'>
+        <label class="control-label col-sm-2" for="FechaCorte">Fecha de Corte:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="FechaCorte" placeholder="Digite la fecha de corte" ng-model="FechaCorte" required>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="input-group date'" id='datetimeFechaRenovacion'>
+        <label class="control-label col-sm-2" for="FechaRenovacion">Fecha de Renovacion:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="FechaRenovacion" placeholder="Digite la fecha de renovacion" ng-model="FechaRenovacion" required>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-disabled="disabled">Guardar Cambios</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimeFechaCorte').datetimepicker();
+                $('#datetimeFechaRenovacion').datetimepicker();
+            });
+</script>

@@ -131,7 +131,43 @@ namespace UserInterface
             return " Se ha agregador el servicio exitosamente";
 
         }
-        
+
+        [WebMethod]
+        public void getCuentaCreditoPersonal(string NumeroCuenta)
+        {
+            Tarjeta tarjeta = administradorCuentaPersonal.getCuentaCreditoPersonal(NumeroCuenta);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(tarjeta));
+        }
+
+
+        [WebMethod]
+        public string EditCuentaCreditoPersonal(string NumeroCuenta, string Pin, string Cedula,
+            string Balance, string SaldoBloqueado, string SaldoCongelado,
+            string Taza, string Millas, string FechaCorte, string FechaRenovacion)
+        {
+            Tarjeta t = administradorCuentaPersonal.getCuentaCreditoPersonal(NumeroCuenta);
+            if (t == null)
+            {
+                return " Ha ocurrido un error inesperado";
+            } else
+            {
+                t.Pin = int.Parse(Pin);
+                t.Cliente = administratorPersonas.getPersona(Cedula);
+                t.Cuenta.Balance = double.Parse(Balance);
+                t.Cuenta.SaldoBloqueado = double.Parse(SaldoBloqueado);
+                t.Cuenta.SaldoCongelado = double.Parse(SaldoCongelado);
+                ((CuentaCreditoPersonal)t.Cuenta).Millas = int.Parse(Millas);
+                ((CuentaCreditoPersonal)t.Cuenta).FechaCorte = System.DateTime.Parse(FechaCorte);
+                ((CuentaCreditoPersonal)t.Cuenta).FechaRenovacion = System.DateTime.Parse(FechaRenovacion);
+
+                administradorCuentaPersonal.EditCuentaCreditoPersonal(t);
+                return " Se ha editado la cuenta exitosamente";
+            }
+        }
+
+
         [WebMethod]
         public void getAllCuentasCreditoPersonal()
         {
@@ -139,6 +175,14 @@ namespace UserInterface
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(tarjetas));
+        }
+
+        [WebMethod]
+        public string DeleteCuentaCreditoPersonal(string NumeroCuenta)
+        {
+            administradorCuentaPersonal.deleteCuentaCreditoPersona(NumeroCuenta);
+            return " Se ha eliminado la cuenta exitosamente";
+
         }
     }
 }

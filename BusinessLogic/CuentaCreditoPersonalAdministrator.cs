@@ -65,5 +65,77 @@ namespace BusinessLogic
             }
             return retorno;
         }
+
+        public Tarjeta getCuentaCreditoPersonal(string numeroCuenta)
+        {
+            TOTarjeta t = daoCreditoPersonal.getCuentaCreditoPersonal(numeroCuenta);
+            if (t == null)
+            {
+                return null;
+            } else
+            {
+                return new Tarjeta
+                {
+                    NumeroTarjeta = t.NumeroTarjeta,
+                    CasaMatriz = t.CasaMatriz,
+                    CVV = t.CVV,
+                    imgSrc = t.imgSrc,
+                    Descripcion = t.Descripcion,
+                    Pin = t.Pin,
+                    Cliente = personasAdministrator.convertToPersona((TOPersona)t.Cliente),
+                    Cuenta = new CuentaCreditoPersonal
+                    {
+                        Balance = t.Cuenta.Balance,
+                        SaldoBloqueado = t.Cuenta.SaldoBloqueado,
+                        SaldoCongelado = t.Cuenta.SaldoCongelado,
+                        Divisa = t.Cuenta.Divisa,
+                        Taza = ((TOCuentaCreditoPersonal)t.Cuenta).Taza,
+                        Millas = ((TOCuentaCreditoPersonal)t.Cuenta).Millas,
+                        Categoria = ((TOCuentaCreditoPersonal)t.Cuenta).Categoria,
+                        FechaCorte = ((TOCuentaCreditoPersonal)t.Cuenta).FechaCorte,
+                        FechaRenovacion = ((TOCuentaCreditoPersonal)t.Cuenta).FechaRenovacion,
+                        NumeroSinpe = t.Cuenta.NumeroSinpe,
+                        NumeroCuenta = t.Cuenta.NumeroCuenta,
+                        Cliente = personasAdministrator.convertToPersona((TOPersona)((TOCuentaCreditoPersonal)t.Cuenta).Cliente)
+                    }
+
+                };
+            }
+        }
+
+        public void EditCuentaCreditoPersonal(Tarjeta t)
+        {
+            daoCreditoPersonal.editCuentaCreditoPersonal(new TOTarjeta
+            {
+                NumeroTarjeta = t.NumeroTarjeta,
+                CVV = t.CVV,
+                Pin = t.Pin,
+                CasaMatriz = t.CasaMatriz,
+                imgSrc = t.imgSrc,
+                Descripcion = t.Descripcion,
+                Cuenta = new TOCuentaCreditoPersonal
+                {
+                    Balance = t.Cuenta.Balance,
+                    FechaCorte = ((CuentaCreditoPersonal)t.Cuenta).FechaCorte,
+                    FechaRenovacion = ((CuentaCreditoPersonal)t.Cuenta).FechaRenovacion,
+                    Millas = ((CuentaCreditoPersonal)t.Cuenta).Millas,
+                    NumeroCuenta = t.Cuenta.NumeroCuenta,
+                    NumeroSinpe = t.Cuenta.NumeroCuenta,
+                    SaldoBloqueado = t.Cuenta.SaldoBloqueado,
+                    SaldoCongelado = t.Cuenta.SaldoCongelado,
+                    Divisa = t.Cuenta.Divisa,
+                    Taza = ((CuentaCreditoPersonal)t.Cuenta).Taza,
+                    Plazo = ((CuentaCreditoPersonal)t.Cuenta).Plazo,
+                    Cliente = personasAdministrator.convertToTOPersona((Persona)t.Cliente),
+                    Categoria = ((CuentaCreditoPersonal)t.Cuenta).Categoria
+                },
+                Cliente = personasAdministrator.convertToTOPersona((Persona)t.Cliente)
+            });
+        }
+
+        public void deleteCuentaCreditoPersona(string numeroCuenta)
+        {
+            daoCreditoPersonal.deleteCuentaCreditoPersonal(numeroCuenta);
+        }
     }
 }

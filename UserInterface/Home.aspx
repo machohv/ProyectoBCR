@@ -57,7 +57,11 @@
     <script src="scripts/metisMenu.min.js"></script>
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/angular-route.js"></script>
+    <script src="scripts/moment.min.js"></script>
     <script src="scripts/angular-animate.min.js"></script>
+
+    <link href="Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="scripts/bootstrap-datetimepicker.min.js"></script>
 
     <script src="scripts/AngularLogic/app.js"></script>
     <script src="scripts/AngularLogic/Factories/servicesFactory.js"></script>

@@ -121,9 +121,9 @@ namespace DataAccess
             return tarjetas;
         }
 
-        public TOCuentaCreditoPersonal getCuentaCreditoPersonal(string numeroCuenta)
+        public TOTarjeta getCuentaCreditoPersonal(string numeroCuenta)
         {
-            SqlCommand command = new SqlCommand("getCuentaCreditoPersonal", connection);
+            SqlCommand command = new SqlCommand("getCreditoPersonal", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
             SqlDataReader reader;
@@ -134,31 +134,118 @@ namespace DataAccess
             }
 
             reader = command.ExecuteReader();
-            TOCuentaCreditoPersonal cuenta = null;
+            TOTarjeta retorno = null;
 
             if (reader.Read())
             {
-                cuenta = new TOCuentaCreditoPersonal
+                retorno = new TOTarjeta
                 {
-                    NumeroCuenta = reader["Numero_Cuenta"].ToString(),
-                    NumeroSinpe = reader["Numero_Sinpe"].ToString(),
-                    Balance = double.Parse(reader["Balance"].ToString()),
-                    SaldoBloqueado = double.Parse(reader["Saldo_Bloqueado"].ToString()),
-                    SaldoCongelado = double.Parse(reader["Saldo_Congelado"].ToString()),
-                    Divisa = reader["Divisa"].ToString(),
-                    Taza = decimal.Parse(reader["Taza"].ToString()),
-                    FechaCorte = System.DateTime.Parse(reader["Fecha_De_Corte"].ToString()),
-                    Cliente = new DAOPersona().getPersona(reader["Cedula"].ToString()),
-                    FechaRenovacion = System.DateTime.Parse(reader["Fecha_Renovacion"].ToString()),
-                    Millas = int.Parse(reader["Millas"].ToString()),
-                    Categoria = reader["Categoria"].ToString()
+                    NumeroTarjeta = reader["NUMERO_TARJETA"].ToString(),
+                    CasaMatriz = reader["CASA_MATRIZ"].ToString(),
+                    CVV = int.Parse(reader["CVV"].ToString()),
+                    imgSrc = reader["IMAGEN"].ToString(),
+                    Descripcion = reader["DESCRIPCION"].ToString(),
+                    Pin = int.Parse(reader["PIN"].ToString()),
+                    Cliente = new DAOPersona().getPersona(reader["CEDULA"].ToString()),
+                    Cuenta = new TOCuentaCreditoPersonal
+                    {
+                        Balance = double.Parse(reader["BALANCE"].ToString()),
+                        SaldoBloqueado = double.Parse(reader["SALDO_BLOQUEADO"].ToString()),
+                        SaldoCongelado = double.Parse(reader["SALDO_CONGELADO"].ToString()),
+                        Divisa = reader["DIVISA"].ToString(),
+                        Taza = decimal.Parse(reader["TAZA"].ToString()),
+                        Millas = int.Parse(reader["MILLAS"].ToString()),
+                        Categoria = reader["CATEGORIA"].ToString(),
+                        FechaCorte = System.DateTime.Parse(reader["FECHA_DE_CORTE"].ToString()),
+                        FechaRenovacion = System.DateTime.Parse(reader["FECHA_RENOVACION"].ToString()),
+                        NumeroSinpe = reader["NUMERO_SINPE"].ToString(),
+                        NumeroCuenta = reader["NUMERO_CUENTA"].ToString(),
+                        Cliente = new DAOPersona().getPersona(reader["CEDULA"].ToString())
+                    }
                 };
             }
             if (connection.State != ConnectionState.Closed)
             {
                 connection.Close();
             }
-            return cuenta;
+            return retorno;
         }
+
+        public void deleteCuentaCreditoPersonal(string numeroCuenta)
+        {
+            SqlCommand command = new SqlCommand("DeleteTarjeta", connection);
+            SqlCommand command2 = new SqlCommand("DeleteCreditoPersonal", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command2.CommandType = System.Data.CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
+            command2.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
+
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            command.ExecuteNonQuery();
+            command2.ExecuteNonQuery();
+
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+        }
+
+        public void editCuentaCreditoPersonal(TOTarjeta t)
+        {
+            SqlCommand command = new SqlCommand("EditTarjeta", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@NumeroTarjeta", t.NumeroTarjeta);
+            command.Parameters.AddWithValue("@CasaMatriz", t.CasaMatriz);
+            command.Parameters.AddWithValue("@FechaVencimiento", ((TOCuentaCreditoPersonal)t.Cuenta).FechaRenovacion);
+            command.Parameters.AddWithValue("@Imagen", t.imgSrc);
+            command.Parameters.AddWithValue("@Descripcion", t.Descripcion);
+            command.Parameters.AddWithValue("@CVV", t.CVV);
+            command.Parameters.AddWithValue("@Pin", t.Pin);
+            command.Parameters.AddWithValue("@NombrePortador", 
+                ((TOPersona)t.Cliente).PrimerNombre + " "  +
+                ((TOPersona)t.Cliente).SegundoNombre + " " +
+                ((TOPersona)t.Cliente).PrimerApellido + " " +
+                ((TOPersona)t.Cliente).SegundoApellido);
+
+
+            SqlCommand command2 = new SqlCommand("EditCreditoPersonal", connection);
+            command2.CommandType = System.Data.CommandType.StoredProcedure;
+            command2.Parameters.AddWithValue("@NumeroCuenta", t.Cuenta.NumeroCuenta);
+            command2.Parameters.AddWithValue("@NumeroSinpe", t.Cuenta.NumeroSinpe);
+            command2.Parameters.AddWithValue("@Divisa", t.Cuenta.Divisa);
+            command2.Parameters.AddWithValue("@Balance", t.Cuenta.Balance);
+            command2.Parameters.AddWithValue("@SaldoBloqueado", t.Cuenta.SaldoBloqueado);
+            command2.Parameters.AddWithValue("@SaldoCongelado", t.Cuenta.SaldoCongelado);
+            command2.Parameters.AddWithValue("@Taza", ((TOCuentaCredito)t.Cuenta).Taza);
+            command2.Parameters.AddWithValue("@FechaCorte", ((TOCuentaCreditoPersonal)t.Cuenta).FechaCorte);
+            command2.Parameters.AddWithValue("@Cedula", t.Cliente.Cedula);
+            command2.Parameters.AddWithValue("@Categoria", ((TOCuentaCreditoPersonal)t.Cuenta).Categoria);
+            command2.Parameters.AddWithValue("@Millas", ((TOCuentaCreditoPersonal)t.Cuenta).Millas);
+            command2.Parameters.AddWithValue("@FechaRenovacion", ((TOCuentaCreditoPersonal)t.Cuenta).FechaRenovacion);
+
+
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            command.ExecuteNonQuery();
+            command2.ExecuteNonQuery();
+
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+        }
+
+
     }
+
 }
