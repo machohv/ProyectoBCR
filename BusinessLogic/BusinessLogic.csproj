@@ -55,6 +55,7 @@
     <Compile Include="EmpleadosAdministrator.cs" />
     <Compile Include="Encryptor.cs" />
     <Compile Include="Entidad.cs" />
+    <Compile Include="Pensiones.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PersonasAdministrator.cs" />
     <Compile Include="Program.cs" />
