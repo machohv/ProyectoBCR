@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreditoEmpresarial.cs" />
     <Compile Include="Cuenta.cs" />
+    <Compile Include="CuentaAhorro.cs" />
+    <Compile Include="CuentaCorriente.cs" />
     <Compile Include="CuentaCredito.cs" />
     <Compile Include="CuentaCreditoPersonal.cs" />
     <Compile Include="CuentaCreditoPersonalAdministrator.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="PersonasAdministrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SociedadAnonima.cs" />
     <Compile Include="Tarjeta.cs" />
     <Compile Include="Telefono.cs" />
     <Compile Include="UserVerification.cs" />

@@ -47,9 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOcreditoEmpresarial.cs" />
+    <Compile Include="DAOCuentaAhorro.cs" />
+    <Compile Include="DAOCuentaCorriente.cs" />
     <Compile Include="DAOCuentaCreditoPersonal.cs" />
     <Compile Include="DAOEmpleado.cs" />
     <Compile Include="DAOPersona.cs" />
+    <Compile Include="DAOSociedadAnonima.cs" />
+    <Compile Include="DAO_CONNECTION_STRING.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserVerification.cs" />
