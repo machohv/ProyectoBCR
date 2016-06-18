@@ -59,6 +59,7 @@
     <Compile Include="TOEntidad.cs" />
     <Compile Include="TOPensiones.cs" />
     <Compile Include="TOPersona.cs" />
+    <Compile Include="TOSeguro.cs" />
     <Compile Include="TOSociedadAnonima.cs" />
     <Compile Include="TOTarjeta.cs" />
     <Compile Include="TOTelefono.cs" />

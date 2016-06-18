@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace TransferObjects
 {
-    public class TOPensiones : TOPersona
+    public class TOSeguro : TOEntidad
     {
 
-
-        public int CodigoPension { get; set; }
+        public int CodigoSeguro { get; set; }
         public string Cedula { get; set; }
-        public string TipoPension { get; set; }
-        public double ValorPension { get; set; }
+        public string TipoSeguro { get; set; }
+        public string Asegurado { get; set; }
+        public double ValorSeguro { get; set; }
 
         public TOEntidad Entidad { get; set; }
-        public TOPersona Persona { get; set; }
 
     }
 }
