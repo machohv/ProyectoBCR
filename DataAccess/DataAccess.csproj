@@ -52,6 +52,7 @@
     <Compile Include="DAOCuentaCorriente.cs" />
     <Compile Include="DAOCuentaCreditoPersonal.cs" />
     <Compile Include="DAOEmpleado.cs" />
+    <Compile Include="DAOEntidad.cs" />
     <Compile Include="DAOPersona.cs" />
     <Compile Include="DAOSociedadAnonima.cs" />
     <Compile Include="DAO_CONNECTION_STRING.cs" />

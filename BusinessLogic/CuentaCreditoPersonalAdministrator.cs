@@ -137,5 +137,31 @@ namespace BusinessLogic
         {
             daoCreditoPersonal.deleteCuentaCreditoPersonal(numeroCuenta);
         }
+
+        public List<CuentaCreditoPersonal> getCuentasCreditoPersonal(string cedula)
+        {
+            List<CuentaCreditoPersonal> retorno = new List<CuentaCreditoPersonal>();
+            List<TOCuentaCreditoPersonal> listTO = daoCreditoPersonal.getCuentasCreditoPersonal(cedula);
+            foreach (TOCuentaCreditoPersonal c in listTO)
+            {
+                retorno.Add(new CuentaCreditoPersonal
+                {
+                    Balance = c.Balance,
+                    SaldoBloqueado = c.SaldoBloqueado,
+                    SaldoCongelado = c.SaldoCongelado,
+                    Divisa = c.Divisa,
+                    Taza = ((TOCuentaCreditoPersonal)c).Taza,
+                    Millas = ((TOCuentaCreditoPersonal)c).Millas,
+                    Categoria = ((TOCuentaCreditoPersonal)c).Categoria,
+                    FechaCorte = ((TOCuentaCreditoPersonal)c).FechaCorte,
+                    FechaRenovacion = ((TOCuentaCreditoPersonal)c).FechaRenovacion,
+                    NumeroSinpe = c.NumeroSinpe,
+                    NumeroCuenta = c.NumeroCuenta,
+                    Cliente = personasAdministrator.convertToPersona((TOPersona)((TOCuentaCreditoPersonal)c).Cliente)
+
+                });
+            }
+            return retorno;
+        }
     }
 }

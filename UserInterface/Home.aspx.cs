@@ -13,14 +13,14 @@ namespace UserInterface
         private Empleado empleado;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["user"] == null)
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
-            //else
-            //{
-            //    empleado = (Empleado)Session["user"];
-            //}
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                empleado = (Empleado)Session["user"];
+            }
         }
     }
 }

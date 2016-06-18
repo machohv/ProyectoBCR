@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferObjects", "Transfer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{624953AF-5646-461C-8B70-377AFB342265}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientInterface", "ClientInterface\ClientInterface.csproj", "{47E5B750-DC66-4802-8EA1-184A464B1D9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{624953AF-5646-461C-8B70-377AFB342265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{624953AF-5646-461C-8B70-377AFB342265}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{624953AF-5646-461C-8B70-377AFB342265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E5B750-DC66-4802-8EA1-184A464B1D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E5B750-DC66-4802-8EA1-184A464B1D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E5B750-DC66-4802-8EA1-184A464B1D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E5B750-DC66-4802-8EA1-184A464B1D9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

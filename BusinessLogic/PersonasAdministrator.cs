@@ -55,6 +55,16 @@ namespace BusinessLogic
 
         public void AddPersona(Persona p, Telefono t, Direccion d)
         {
+            if (p.SegundoNombre == "undefined ")
+            {
+                p.SegundoNombre = "";
+            }
+
+            if (p.SegundoApellido == "undefined ")
+            {
+                p.SegundoApellido = "";
+            }
+
             p.Password = Encryptor.MD5Hash(p.Password);
             daoPersona.AddPersona(new TOPersona {
                 Cedula = p.Cedula,
