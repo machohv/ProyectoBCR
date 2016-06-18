@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Services;
-using System.Web.Script.Services;
-using BusinessLogic;
 using System.Web.Script.Serialization;
+using System.Web.Services;
 
 namespace UserInterface
 {
@@ -15,11 +14,11 @@ namespace UserInterface
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    [ScriptService]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
+
         private PersonasAdministrator administratorPersonas = new PersonasAdministrator();
         private CuentaCreditoPersonalAdministrator administradorCuentaPersonal = new CuentaCreditoPersonalAdministrator();
 
@@ -30,12 +29,13 @@ namespace UserInterface
         }
 
         [WebMethod]
-        public string AddPersona(string cedula, string correo, string password, 
+        public string AddPersona(string cedula, string correo, string password,
             string primerNombre, string segundoNombre, string primerApellido,
             string segundoApellido, string profesion, string telefono, string celular,
             string provincia, string canton, string distrito, string direccionExacta)
         {
-            administratorPersonas.AddPersona(new Persona {
+            administratorPersonas.AddPersona(new Persona
+            {
                 Cedula = cedula,
                 Password = password,
                 Correo = correo,
@@ -44,17 +44,19 @@ namespace UserInterface
                 PrimerApellido = primerApellido,
                 SegundoApellido = segundoApellido,
                 Profesion = profesion
-            }, new Telefono {
+            }, new Telefono
+            {
                 telefono = telefono,
                 celular = celular
-            }, new Direccion {
+            }, new Direccion
+            {
                 provincia = provincia,
                 canton = canton,
                 distrito = distrito,
                 direccionExacta = direccionExacta
             });
 
-            return " Se ha añadido a  " + primerNombre + " " +  segundoNombre + " " +
+            return " Se ha añadido a  " + primerNombre + " " + segundoNombre + " " +
                 primerApellido + " " + segundoApellido + " exitosamente";
 
         }
@@ -151,7 +153,8 @@ namespace UserInterface
             if (t == null)
             {
                 return " Ha ocurrido un error inesperado";
-            } else
+            }
+            else
             {
                 t.Pin = int.Parse(Pin);
                 t.Cliente = administratorPersonas.getPersona(Cedula);
