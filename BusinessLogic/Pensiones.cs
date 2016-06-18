@@ -11,8 +11,8 @@ namespace BusinessLogic
         public int CodigoPension { get; set; }
         public string Cedula { get; set; }
         public string TipoPension { get; set; }
-        public double ValorPEnsion { get; set; }
-        
+        public double ValorPension { get; set; }
+
         public Entidad Entidad { get; set; }
         public Persona Persona { get; set; }
 

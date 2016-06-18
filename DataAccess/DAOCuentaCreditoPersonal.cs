@@ -245,6 +245,47 @@ namespace DataAccess
             }
         }
 
+        public List<TOCuentaCreditoPersonal> getCuentasCreditoPersonal(string cedula)
+        {
+            SqlCommand command = new SqlCommand("getCreditoPersonalporCliente", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@cedula", cedula);
+
+            SqlDataReader reader;
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            reader = command.ExecuteReader();
+            List<TOCuentaCreditoPersonal> cuentas = new List<TOCuentaCreditoPersonal>();
+
+            while (reader.Read())
+            {
+                cuentas.Add(new TOCuentaCreditoPersonal
+                    {
+                        Balance = double.Parse(reader["BALANCE"].ToString()),
+                        SaldoBloqueado = double.Parse(reader["SALDO_BLOQUEADO"].ToString()),
+                        SaldoCongelado = double.Parse(reader["SALDO_CONGELADO"].ToString()),
+                        Divisa = reader["DIVISA"].ToString(),
+                        Taza = decimal.Parse(reader["TAZA"].ToString()),
+                        Millas = int.Parse(reader["MILLAS"].ToString()),
+                        Categoria = reader["CATEGORIA"].ToString(),
+                        FechaCorte = System.DateTime.Parse(reader["FECHA_DE_CORTE"].ToString()),
+                        FechaRenovacion = System.DateTime.Parse(reader["FECHA_RENOVACION"].ToString()),
+                        NumeroSinpe = reader["NUMERO_SINPE"].ToString(),
+                        NumeroCuenta = reader["NUMERO_CUENTA"].ToString(),
+                        Cliente = new DAOPersona().getPersona(reader["CEDULA"].ToString())
+                });
+            }
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+            return cuentas;
+        }
+
 
     }
 

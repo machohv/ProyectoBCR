@@ -1,0 +1,53 @@
+﻿<div class="page-header">
+    <h1>Cuentas de Crédito Personales</h1>
+</div>
+<br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Cuenta</th>
+                <th>Número de Sinpe</th>
+                <th>Balance</th>
+                <th>Saldo Bloqueado</th>
+                <th>Saldo Congelado</th>
+                <th>Divisa</th>
+                <th>Taza</th>
+                <th>Fecha de Corte</th>
+                <th>Categoria</th>
+                <th>Millas</th>
+                <th>Fecha de Renovación</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="cuenta in cuentas | filter: searchStr">
+                <td>{{cuenta.NumeroCuenta}}</td>
+                <td>{{cuenta.NumeroSinpe}}</td>
+                <td>{{cuenta.Balance}}</td>
+                <td>{{cuenta.SaldoBloqueado}}</td>
+                <td>{{cuenta.SaldoCongelado}}</td>
+                <td>{{cuenta.Divisa}}</td>
+                <td>{{cuenta.Taza}}</td>
+                <td>{{cuenta.FechaCorte}}</td>
+                <td>{{cuenta.Categoria}}</td>
+                <td>{{cuenta.Millas}}</td>
+                <td>{{cuenta.FechaRenovacion}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
