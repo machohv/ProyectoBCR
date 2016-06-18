@@ -256,6 +256,7 @@
     <Content Include="scripts\AngularLogic\Controllers\viewSegurosController.js" />
     <Content Include="scripts\AngularLogic\Controllers\viewSociedadesAnonimasController.js" />
     <Content Include="scripts\AngularLogic\Controllers\viewTransaccionesController.js" />
+    <Content Include="scripts\AngularLogic\Factories\CreditoEmpresarialFactory.js" />
     <Content Include="scripts\AngularLogic\Factories\CreditosPersonalesFactory.js" />
     <Content Include="scripts\bootstrap-datetimepicker.js" />
     <Content Include="scripts\bootstrap-datetimepicker.min.js" />

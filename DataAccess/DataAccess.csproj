@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DAOCuentaCreditoPersonal.cs" />
     <Compile Include="DAOEmpleado.cs" />
+    <Compile Include="DAOEntidad.cs" />
     <Compile Include="DAOPersona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
