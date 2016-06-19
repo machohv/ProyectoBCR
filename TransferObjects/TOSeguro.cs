@@ -10,7 +10,7 @@ namespace TransferObjects
     {
 
         public int CodigoSeguro { get; set; }
-        public string Cedula { get; set; }
+        //public string Cedula { get; set; }
         public string TipoSeguro { get; set; }
         public string Asegurado { get; set; }
         public double ValorSeguro { get; set; }
