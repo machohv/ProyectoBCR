@@ -287,6 +287,44 @@ namespace DataAccess
         }
 
 
+
+        public List<TOTarjeta> getTarjetasCredito(string cedula)
+        {
+            SqlCommand command = new SqlCommand("getTarjetaCredito", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@cedula", cedula);
+
+            SqlDataReader reader;
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            reader = command.ExecuteReader();
+            List<TOTarjeta> tarjetas = new List<TOTarjeta>();
+
+            while (reader.Read())
+            {
+                tarjetas.Add(new TOTarjeta
+                {
+                    NumeroTarjeta = reader["NUMERO_TARJETA"].ToString(),
+                    CasaMatriz = reader["CASA_MATRIZ"].ToString(),
+                    CVV = int.Parse(reader["CVV"].ToString()),
+                    imgSrc = reader["IMAGEN"].ToString(),
+                    Descripcion = reader["DESCRIPCION"].ToString(),
+                    Pin = int.Parse(reader["PIN"].ToString())                   
+                });
+            }
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+            return tarjetas;
+        }
+
+
+
     }
 
 }

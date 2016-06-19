@@ -205,5 +205,14 @@ namespace ClientInterface
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(cuentas));
         }
+
+        [WebMethod]
+        public void getTarjetasCredito(string cedula)
+        {
+            List<Tarjeta> tarjetas = administradorCuentaPersonal.getTarjetas(cedula);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(tarjetas));
+        }
     }
 }

@@ -94,6 +94,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\360Visa.png" />
+    <Content Include="img\bankBcr.jpg" />
+    <Content Include="img\BlackMasterCard.png" />
+    <Content Include="img\ComprasEmpresariales.png" />
+    <Content Include="img\ComprasInstitucionales.png" />
+    <Content Include="img\EmpresarialVisa.png" />
+    <Content Include="img\HitVisa.png" />
+    <Content Include="img\InfiniteVisa.png" />
+    <Content Include="img\InternacionalMasterCard.png" />
+    <Content Include="img\InternacionalMasterCardDebito.png" />
+    <Content Include="img\InternacionalVisa.png" />
+    <Content Include="img\InternacionalVisaDebito.png" />
+    <Content Include="img\logo-bcr.png" />
+    <Content Include="img\MorphoVisa.png" />
+    <Content Include="img\OroMasterCard.png" />
+    <Content Include="img\OroMasterCardDebito.png" />
+    <Content Include="img\OroVisa.png" />
+    <Content Include="img\OroVisaDebito.png" />
+    <Content Include="img\PensionadosVisa.png" />
+    <Content Include="img\PlatinumMasterCard.png" />
+    <Content Include="img\PlatinumMasterCardDebito.png" />
+    <Content Include="img\PlatinumVisa.png" />
+    <Content Include="img\PlatinumVisaDebito.png" />
+    <Content Include="img\PymesMasterCard.png" />
+    <Content Include="img\TarjetaVirtualMC.png" />
+    <Content Include="img\TarjetaVirtualV.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -126,22 +152,6 @@
     <Content Include="Content\login.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
-    <Content Include="img\bankBcr.jpg" />
-    <Content Include="img\BlackMasterCard.png" />
-    <Content Include="img\ComprasEmpresariales.png" />
-    <Content Include="img\ComprasInstitucionales.png" />
-    <Content Include="img\EmpresarialVisa.png" />
-    <Content Include="img\InfiniteVisa.png" />
-    <Content Include="img\InternacionalMasterCard.png" />
-    <Content Include="img\InternacionalVisa.png" />
-    <Content Include="img\logo-bcr.png" />
-    <Content Include="img\OroMasterCard.png" />
-    <Content Include="img\OroVisa.png" />
-    <Content Include="img\PlatinumMasterCard.png" />
-    <Content Include="img\PlatinumVisa.png" />
-    <Content Include="img\PymesMasterCard.png" />
-    <Content Include="img\TarjetaVirtualMC.png" />
-    <Content Include="img\TarjetaVirtualV.png" />
     <Content Include="Login.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />

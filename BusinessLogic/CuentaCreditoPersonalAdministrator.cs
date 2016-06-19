@@ -66,6 +66,8 @@ namespace BusinessLogic
             return retorno;
         }
 
+        
+
         public Tarjeta getCuentaCreditoPersonal(string numeroCuenta)
         {
             TOTarjeta t = daoCreditoPersonal.getCuentaCreditoPersonal(numeroCuenta);
@@ -158,6 +160,26 @@ namespace BusinessLogic
                     NumeroSinpe = c.NumeroSinpe,
                     NumeroCuenta = c.NumeroCuenta,
                     Cliente = personasAdministrator.convertToPersona((TOPersona)((TOCuentaCreditoPersonal)c).Cliente)
+
+                });
+            }
+            return retorno;
+        }
+
+        public List<Tarjeta> getTarjetas(string cedula)
+        {
+            List<Tarjeta> retorno = new List<Tarjeta>();
+            List<TOTarjeta> listTO = daoCreditoPersonal.getTarjetasCredito(cedula);
+            foreach (TOTarjeta t in listTO)
+            {
+                retorno.Add(new Tarjeta
+                {
+                    NumeroTarjeta = t.NumeroTarjeta,
+                    CasaMatriz = t.CasaMatriz,
+                    CVV = t.CVV,
+                    imgSrc = t.imgSrc,
+                    Descripcion = t.Descripcion,
+                    Pin = t.Pin
 
                 });
             }
