@@ -11,7 +11,7 @@ namespace TransferObjects
 
 
         public int CodigoPension { get; set; }
-        public string Cedula { get; set; }
+        //public string Cedula { get; set; }
         public string TipoPension { get; set; }
         public double ValorPension { get; set; }
 

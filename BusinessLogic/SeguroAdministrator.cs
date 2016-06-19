@@ -63,7 +63,7 @@ namespace BusinessLogic
 
         public void EditSeguro(Seguro s)
         {
-            daoSeguro.updateSeguro(convertToTOSeguro(p));
+            daoSeguro.updateSeguro(convertToTOSeguro(s));
         }
 
         public void deleteSeguro(string cedula)

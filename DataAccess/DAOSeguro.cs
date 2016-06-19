@@ -14,7 +14,7 @@ namespace DataAccess
     {
 
         private SqlConnection connection = new SqlConnection(DataAccess.Properties.Settings.Default.ConnectionString);
-        public TOEntidad getSeguro(string cedula)
+        public TOSeguro getSeguro(string cedula)
         {
             SqlCommand command = new SqlCommand("getSeguro", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
