@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,21 @@ namespace DataAccess
 
         }
 
+        public List<TransferObjects.TOSociedadAnonima> getSociedadesAnonimas(String cedula) {
+            SqlCommand com = new SqlCommand("EXECUTE getSociedadAnonima @cedula = @ced", DAO_CONNECTION_STRING.getConnectionInstance());
+            com.Parameters.AddWithValue("@ced", cedula);
+            DataTable dt = new DataTable();
+            var list = new List<TransferObjects.TOSociedadAnonima>();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = com;
+            adapter.Fill(dt);
+            foreach (DataRow item in dt.Rows) 
+            {
+                list.Add(new TransferObjects.TOSociedadAnonima(item[0].ToString(),item[1].ToString(),item[2].ToString(),item[4].ToString()));
+            }
+            return list; 
+        }
+ 
         public Boolean deleteSociedadAnonima(String ced)
         {
            

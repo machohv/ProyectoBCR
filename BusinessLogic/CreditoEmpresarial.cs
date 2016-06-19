@@ -11,7 +11,6 @@ namespace BusinessLogic
  public class CreditoEmpresarial
     {
 
-
         public int NUMEROCUENTA { get; set; }
         public string CEDULA { get; set; }
         public string BENEFICIO { get; set; }
@@ -19,6 +18,7 @@ namespace BusinessLogic
         public string COBERTURAAUTOS { get; set; }
         public string COBERTURAACCIDENTES { get; set; }
         public DateTime FECHA { get; set; }
+        public int TAZA { get; set; }
 
         public CreditoEmpresarial() {
 

@@ -99,7 +99,6 @@ namespace UserInterface
 
             return " Se ha editado a " + primerNombre + " " + segundoNombre + " " +
                 primerApellido + " " + segundoApellido + " exitosamente";
-
         }
 
         [WebMethod]
@@ -138,7 +137,6 @@ namespace UserInterface
         public void getCuentaCreditoPersonal(string NumeroCuenta)
         {
             Tarjeta tarjeta = administradorCuentaPersonal.getCuentaCreditoPersonal(NumeroCuenta);
-
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(tarjeta));
         }
@@ -170,7 +168,6 @@ namespace UserInterface
             }
         }
 
-
         [WebMethod]
         public void getAllCuentasCreditoPersonal()
         {
@@ -184,8 +181,24 @@ namespace UserInterface
         public string DeleteCuentaCreditoPersonal(string NumeroCuenta)
         {
             administradorCuentaPersonal.deleteCuentaCreditoPersona(NumeroCuenta);
-            return " Se ha eliminado la cuenta exitosamente";
+            return "Se ha eliminado la cuenta exitosamente";
 
         }
+
+        [WebMethod]
+        public void getSociedadesAnonimas(String id) {
+            List<SociedadAnonima> list = new SociedadAnonima().getSociedadesAnonimas(id);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(list));
+        }
+
+        public string addSociedadAnonima(string cedula, string correo, string password, string cedularep, string nombrerep) {
+            new SociedadAnonima().addSociedadAnonima(cedula, correo, password, cedularep, nombrerep);
+            return "se agrego exitosamente la data";
+
+        }
+
+
     }
 }
