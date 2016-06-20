@@ -11,13 +11,15 @@ namespace DataAccess
 {
   public class DAOCuentaCorriente
     {
-        public Boolean addCuentaCorriente(int numero, Boolean cheques)
+        public Boolean addCuentaCorriente(string cedula,string divisa,string balance)
         {
             try
             {
-                SqlCommand com = new SqlCommand("execute AddCuentaCorriente @numerocuenta=@num, @cheques= @cheq", DAO_CONNECTION_STRING.getConnectionInstance());
-                com.Parameters.AddWithValue("@num", numero);
-                com.Parameters.AddWithValue("@cheq", cheques);
+                SqlCommand com = new SqlCommand("execute AddCuentaCorriente @cedula=@ced, @divisa=@div, @NumeroCuenta=0, @balance=@bal", DAO_CONNECTION_STRING.getConnectionInstance());
+                com.Parameters.AddWithValue("@ced", cedula);
+                com.Parameters.AddWithValue("@div", divisa);
+                com.Parameters.AddWithValue("@bal", balance);
+
 
                 DAO_CONNECTION_STRING.getConnectionInstance().Open();
                 com.ExecuteNonQuery();
@@ -63,7 +65,24 @@ namespace DataAccess
 
             foreach (DataRow item in dt.Rows)
             {
-                list.Add(new TOcuentaCorriente(int.Parse(item[0].ToString()), Boolean.Parse(item[0].ToString())));
+              //  list.Add(new TOcuentaCorriente(int.Parse(item[0].ToString()), Boolean.Parse(item[0].ToString())));
+            }
+            return list;
+        }
+
+        public List<TOcuentaCorriente> getCuentasCorrientes()
+        {
+            SqlCommand com = new SqlCommand("select c.numero_cuenta, c.numero_sinpe,c.balance,c.saldo_bloqueado,c.divisa, d.cedula,t.codigo_talonario,t.cantidad_de_cheques  from cuenta as c join debito as d on c.numero_cuenta = d.numero_cuenta join persona as p on p.cedula = d.cedula join talonario_cheques as t on t.numero_cuenta = c.numero_cuenta; ", DAO_CONNECTION_STRING.getConnectionInstance());
+
+            List<TOcuentaCorriente> list = new List<TOcuentaCorriente>();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = com;
+            adapter.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                list.Add(new TOcuentaCorriente(item[0].ToString(), item[1].ToString(), item[2].ToString(), item[3].ToString(), item[4].ToString(), item[5].ToString(), item[6].ToString(), item[7].ToString()));
             }
             return list;
         }

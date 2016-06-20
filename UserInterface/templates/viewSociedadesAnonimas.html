@@ -1,4 +1,45 @@
 ﻿<div class="page-header">
-    <h1>Ver Clientes Jurídicos</h1>
+    <h1>Ver Sociedades Anonimas</h1>
 </div>
 <br />
+
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cédula Representante</th>
+                <th>Nombre Empresa</th>
+                <th>Número Ced Jurídica</th>
+                <th>Correo electrónico</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="sociedad in sociedades | filter: searchStr">
+                <td>{{sociedad.CEDULAREPRESENTANTE}}</td>
+                <td>{{sociedad.NOMBREREPRESENTANTE}}</td>
+                <td>{{sociedad.Cedula}}</td>
+                <td>{{sociedad.Correo}}</td>
+       
+
+                <td>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

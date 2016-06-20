@@ -8,52 +8,65 @@ using TransferObjects;
 
 namespace BusinessLogic
 {
- public class CreditoEmpresarial
+ public class CreditoEmpresarial:CuentaCredito
     {
 
-
-        public int NUMEROCUENTA { get; set; }
         public string CEDULA { get; set; }
         public string BENEFICIO { get; set; }
         public string SEGURO { get; set; }
         public string COBERTURAAUTOS { get; set; }
-        public string COBERTURAACCIDENTES { get; set; }
+        public string NombrePropietario { get; set; }
         public DateTime FECHA { get; set; }
+        public int TAZA { get; set; }
 
         public CreditoEmpresarial() {
 
         }
 
-        public CreditoEmpresarial(int numerocuenta, string cedula, string beneficio, string seguro, string coberturaautos, string coberturaaccidentes, DateTime time) {
-            this.NUMEROCUENTA = numerocuenta;
-            this.CEDULA = cedula;
-            this.BENEFICIO = beneficio;
-            this.SEGURO = seguro;
-            this.COBERTURAAUTOS = coberturaautos;
-            this.COBERTURAACCIDENTES = coberturaaccidentes;
-
-        }
-
-
-        public Boolean addCredito(int numerocuenta, string cedula, string beneficio, string seguro, string coberturaautos, string coberturaaccidentes, DateTime fecha)
+        public CreditoEmpresarial (String numerocuenta, string sinpe, string divisa, DateTime renovacion, string seguro, string cedula, String nombrepropietario)
         {
-          return  new DAOcreditoEmpresarial().addCredito(numerocuenta, cedula, beneficio, seguro, coberturaautos, coberturaaccidentes, fecha);
+            this.NumeroCuenta = numerocuenta;
+            this.NumeroSinpe = sinpe;
+            this.Divisa = divisa;
+            this.FECHA = renovacion;
+            this.SEGURO = seguro;
+            this.CEDULA = cedula;
+            this.NombrePropietario = nombrepropietario;
+
+   
         }
 
-        public Boolean deleteCredito(int numero) {
+
+        public Boolean addCredito(String divisa, int taza, String cedula, int tarjeta, int meses)
+        {
+          return  new DAOcreditoEmpresarial().addCredito( divisa,  taza,  cedula,  tarjeta,  meses);
+        }
+
+        public Boolean deleteCredito(String numero) {
             return new DAOcreditoEmpresarial().deleteCredito(numero);
         }
 
-        public List<CreditoEmpresarial> getAllCreditoEmpresarial(String filter)
+
+        public List<CreditoEmpresarial> getCreditoEmpresarial(String filter)
         {
             List<CreditoEmpresarial> list = new List<CreditoEmpresarial>();
-            List<TOcreditoEmpresarial> tol = new DAOcreditoEmpresarial().getAllCreditoEmpresarial(filter);
+            List<TOcreditoEmpresarial> tol = new DAOcreditoEmpresarial().getCreditoEmpresarial(filter);
             foreach (TOcreditoEmpresarial item in tol)
             {
-                list.Add(new CreditoEmpresarial(item.NUMEROCUENTA, item.CEDULA, item.BENEFICIO, item.SEGURO, item.COBERTURAAUTOS, item.COBERTURAACCIDENTES, item.FECHA));
+                list.Add(new CreditoEmpresarial(item.NumeroCuenta, item.NumeroSinpe,item.Divisa, item.FECHA,item.SEGURO,item.CEDULA, item.NombrePropietario));
             }
             return list;
+        }
 
+        public List<CreditoEmpresarial> getAllCreditoEmpresarial()
+        {
+            List<CreditoEmpresarial> list = new List<CreditoEmpresarial>();
+            List<TOcreditoEmpresarial> tol = new DAOcreditoEmpresarial().getAllCreditoEmpresarial();
+            foreach (TOcreditoEmpresarial item in tol)
+            {
+                list.Add(new CreditoEmpresarial(item.NumeroCuenta, item.NumeroSinpe, item.Divisa, item.FECHA, item.SEGURO, item.CEDULA, item.NombrePropietario));
+            }
+            return list;
         }
 
     }

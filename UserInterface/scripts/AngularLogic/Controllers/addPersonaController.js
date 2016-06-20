@@ -1,4 +1,6 @@
-﻿app.controller("addPersonaController", function ($scope, $http) {
+﻿
+
+app.controller("addPersonaController", function ($scope, $http) {
     
     $scope.submitForm = function () {
         $http({
@@ -20,6 +22,7 @@
                 "' , distrito:'" + $scope.distrito +
                 "' , direccionExacta:'" + $scope.direccionExacta +
                 "'}",
+
             headers: {
                 "Content-Type": "application/json"
             }

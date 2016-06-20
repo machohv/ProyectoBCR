@@ -9,15 +9,30 @@ namespace TransferObjects
     public class TOcuentaCorriente
     {
 
-        public int NUMERO_CUENTA { get; set; }
-        public Boolean TIENECHEQUES { get; set; }
+        public string NUMERO_CUENTA { get; set; }
+        public string sinpe { get; set; }
+        public string balance { get; set; }
+        public string saldobloq { get; set; }
+        public string divisa { get; set; }
+        public string ced { get; set; }
+        public string codtalonario { get; set; }
+        public string numerocheques { get; set; }
 
-        public TOcuentaCorriente() { }
 
-        public TOcuentaCorriente(int numero, Boolean tienecheques)
+
+        public TOcuentaCorriente(string numerocuenta, string sinpe, string balance, string saldobloq, string divisa, string ced, string codtalonario, string numerocheques)
         {
-            this.TIENECHEQUES = tienecheques;
-            this.NUMERO_CUENTA = numero;
+            this.NUMERO_CUENTA = numerocuenta;
+            this.sinpe = sinpe;
+            this.balance = balance;
+            this.saldobloq = saldobloq;
+            this.divisa = divisa;
+            this.ced = ced;
+            this.codtalonario = codtalonario;
+            this.numerocheques = numerocheques;
         }
+
+
+
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TransferObjects
 {
-    public class TOcreditoEmpresarial
+    public class TOcreditoEmpresarial : TOCuentaCredito
     {
 
         public int NUMEROCUENTA { get; set; }
@@ -15,7 +15,7 @@ namespace TransferObjects
         public string BENEFICIO { get; set; }
         public string SEGURO { get; set; }
         public string COBERTURAAUTOS { get; set; }
-        public string COBERTURAACCIDENTES { get; set; }
+        public string NombrePropietario { get; set; }
         public DateTime FECHA { get; set; }
 
         public TOcreditoEmpresarial()
@@ -23,14 +23,15 @@ namespace TransferObjects
 
         }
 
-        public TOcreditoEmpresarial(int numerocuenta, string cedula, string beneficio, string seguro, string coberturaautos, string coberturaaccidentes, DateTime time)
+        public TOcreditoEmpresarial(String numerocuenta, string sinpe, string divisa, DateTime renovacion, string seguro, string cedula, String nombrepropietario)
         {
-            this.NUMEROCUENTA = numerocuenta;
-            this.CEDULA = cedula;
-            this.BENEFICIO = beneficio;
+            this.NumeroCuenta = numerocuenta;
+            this.NumeroSinpe = sinpe;
+            this.Divisa = divisa;
+            this.FECHA = renovacion;
             this.SEGURO = seguro;
-            this.COBERTURAAUTOS = coberturaautos;
-            this.COBERTURAACCIDENTES = coberturaaccidentes;
+            this.CEDULA = cedula;
+            this.NombrePropietario = nombrepropietario;
 
         }
 

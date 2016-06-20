@@ -1,7 +1,6 @@
 ﻿app.controller("addCuentaPersonalController", function ($scope, $http, CreditosPersonalesService) {
     $scope.creditos = CreditosPersonalesService.getCreditos();
     $scope.selected = { object: '' };
-
     $scope.disabled = true;
 
     $scope.fillSpaces = function () {

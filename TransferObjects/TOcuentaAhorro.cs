@@ -8,15 +8,24 @@ namespace TransferObjects
 {
    public class TOcuentaAhorro
     {
-        public int NUMERO_CUENTA { get; set; }
-        public int LIMITE { get; set; }
+        public string NUMERO_CUENTA { get; set; }
+        public string sinpe { get; set; }
+        public string balance { get; set; }
+        public string saldobloqueado { get; set; }
+        public string saldo_congelado { get; set; }
+        public string divisa { get; set; }
+        public string cedula { get; set; }
 
-        public TOcuentaAhorro() { }
-
-        public TOcuentaAhorro(int numero, int limite)
+        public TOcuentaAhorro(string numerocuenta, string sinpe, string balance, string saldobloq, string saldocong, string divisa, string cedu)
         {
-            this.LIMITE = limite;
-            this.NUMERO_CUENTA = numero;
+            this.NUMERO_CUENTA = numerocuenta;
+            this.sinpe = sinpe;
+            this.balance = balance;
+            this.saldobloqueado = saldobloq;
+            this.saldo_congelado = saldocong;
+            this.divisa = divisa;
+            this.cedula = cedu;
+
         }
     }
 }

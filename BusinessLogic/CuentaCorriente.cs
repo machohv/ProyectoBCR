@@ -11,20 +11,39 @@ namespace BusinessLogic
    public class CuentaCorriente
     {
 
-        public int NUMERO_CUENTA { get; set; }
-        public Boolean TIENECHEQUES { get; set; }
+        public string NUMERO_CUENTA { get; set; }
+        public string sinpe { get; set; }
+        public string balance { get; set; }
+        public string saldobloq { get; set; }
+        public string divisa { get; set; }
+        public string ced { get; set; }
+        public string codtalonario { get; set; }
+        public string numerocheques { get; set; }
+
+
+
+        public CuentaCorriente(string numerocuenta, string sinpe, string balance, string saldobloq, string divisa, string ced, string codtalonario, string numerocheques) {
+            this.NUMERO_CUENTA = numerocuenta;
+            this.sinpe = sinpe;
+            this.balance = balance;
+            this.saldobloq = saldobloq;
+            this.divisa = divisa;
+            this.ced = ced;
+            this.codtalonario = codtalonario;
+            this.numerocheques = numerocheques;
+        }
+
+
+
+
+
 
         public CuentaCorriente() { }
 
-        public CuentaCorriente(int numero, Boolean tienecheques)
-        {
-            this.TIENECHEQUES = tienecheques;
-            this.NUMERO_CUENTA = numero;
-        }
 
-        public Boolean addCuentaCorriente(int numero, Boolean cheques)
+        public Boolean addCuentaCorriente(String cedula, string divisa, string balance)
         {
-            return new DAOCuentaCorriente().addCuentaCorriente(numero, cheques);
+            return new DAOCuentaCorriente().addCuentaCorriente(cedula, divisa,balance);
         }
 
         public Boolean deleteCuentaCorriente(int numero)
@@ -32,14 +51,14 @@ namespace BusinessLogic
             return new DAOCuentaCorriente().deleteCuentaCorriente(numero);
         }
 
-        public List<CuentaCorriente> getCuenta(int numero)
+        public List<CuentaCorriente> getCuentas()
         {
 
-            List<TOcuentaCorriente> list = new DAOCuentaCorriente().getCuentaCorriente(numero);
+            List<TOcuentaCorriente> list = new DAOCuentaCorriente().getCuentasCorrientes();
             var list2 = new List<CuentaCorriente>();
             foreach (TOcuentaCorriente item in list)
             {
-                list2.Add(new CuentaCorriente(item.NUMERO_CUENTA, item.TIENECHEQUES));
+                list2.Add(new CuentaCorriente(item.NUMERO_CUENTA,item.sinpe,item.balance,item.saldobloq,item.divisa,item.ced,item.codtalonario,item.numerocheques));
             }
             return list2;
         }

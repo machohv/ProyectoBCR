@@ -37,7 +37,8 @@ namespace UserInterface
             string segundoApellido, string profesion, string telefono, string celular,
             string provincia, string canton, string distrito, string direccionExacta)
         {
-            administratorPersonas.AddPersona(new Persona {
+            administratorPersonas.AddPersona(new Persona
+            {
                 Cedula = cedula,
                 Password = password,
                 Correo = correo,
@@ -46,17 +47,19 @@ namespace UserInterface
                 PrimerApellido = primerApellido,
                 SegundoApellido = segundoApellido,
                 Profesion = profesion
-            }, new Telefono {
+            }, new Telefono
+            {
                 telefono = telefono,
                 celular = celular
-            }, new Direccion {
+            }, new Direccion
+            {
                 provincia = provincia,
                 canton = canton,
                 distrito = distrito,
                 direccionExacta = direccionExacta
             });
 
-            return " Se ha añadido a  " + primerNombre + " " +  segundoNombre + " " +
+            return " Se ha añadido a  " + primerNombre + " " + segundoNombre + " " +
                 primerApellido + " " + segundoApellido + " exitosamente";
 
         }
@@ -153,7 +156,8 @@ namespace UserInterface
             if (t == null)
             {
                 return " Ha ocurrido un error inesperado";
-            } else
+            }
+            else
             {
                 t.Pin = int.Parse(Pin);
                 t.Cliente = administratorPersonas.getPersona(Cedula);
@@ -305,6 +309,94 @@ namespace UserInterface
             return " Se ha eliminado exitosamente";
 
         }
+        [WebMethod]
+        public void getSociedadesAnonimas(String id)
+        {
+            List<SociedadAnonima> list = new SociedadAnonima().getSociedadesAnonimas(id);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(list));
+        }
+
+        [WebMethod]
+        public void getSociedadAnonima(String id)
+        {
+            SociedadAnonima l = new SociedadAnonima().getSociedadAnonima(id);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(l));
+        }
+
+        [WebMethod]
+        public string addSociedadAnonima(string cedula, string correo, string password, string cedularep, string nombrerep)
+        {
+            new SociedadAnonima().addSociedadAnonima(cedula, correo, password, cedularep, nombrerep);
+            return "se agrego exitosamente la empresa identificada por: " + cedula ;
+
+        }
+
+        [WebMethod]
+        public string updateSociedadAnonima(string cedula, string correo, string password, string cedularep, string nombrerep)
+        {
+            new SociedadAnonima().updateSociedad(cedula, correo, password, cedularep, nombrerep);
+            return "Se editó exitosamente la empresa identificada por: " + cedula;
 
     }
+
+        [WebMethod]
+        public string addCuentaEmpresarial(string divisa, string taza, string cedula, string tarjeta, string meses)
+        {
+            int tar = int.Parse(tarjeta);
+            int m = int.Parse(meses);
+            new CreditoEmpresarial().addCredito(divisa, 32, cedula, tar, m);
+            return "Se registro exitosamente a: " + cedula;
+        }
+
+        [WebMethod]
+        public void getCuentasEmpresariales()
+        {
+            var cuentaempresarial = new CreditoEmpresarial().getAllCreditoEmpresarial();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(cuentaempresarial));
+        }
+
+        [WebMethod]
+        public void getCuentaAhorro(string id)
+        {
+            var cuenta = new CuentaAhorro().getCuenta(id);
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(cuenta));
+        }
+
+        [WebMethod]
+        public String addCuentaAhorro(string id,string divisa,string balance)
+        {
+            new CuentaAhorro().addCuentaAhorro(id, divisa, balance);
+            return "agregada la cuenta identificada por:" + id;
+        }
+
+        [WebMethod]
+        public void getCuentasAhorro()
+        {
+            var cuentas = new CuentaAhorro().getCuentas();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(cuentas));
+        }
+        [WebMethod]
+        public String addCuentaCorriente(string id, string divisa, string balance)
+        {
+            new CuentaCorriente().addCuentaCorriente(id, divisa, balance);
+            return "agregada la cuenta identificada por:" + id;
+        }
+        [WebMethod]
+        public void getCuentasCorrientes()
+        {
+           var cuentas =  new CuentaCorriente().getCuentas();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(cuentas));
+        }
+    }
+
 }

@@ -216,6 +216,39 @@ namespace ClientInterface
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(tarjetas));
         }
+        [WebMethod]
+        public void getCuentasDebitoCorriente(string cedula)
+        {
+            var cuentas = new CuentaCorriente().getCuentas();
+            List<CuentaCorriente> list = new List<CuentaCorriente>();
+            foreach (CuentaCorriente item in cuentas)
+            {
+                if (item.ced.Equals(cedula))
+                {
+                    list.Add(item);   
+                }
+            }
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(list));
+        }
+
+        [WebMethod]
+        public void getCuentasAhorro(string cedula)
+        {
+            var cuentas = new CuentaAhorro().getCuentas();
+            List<CuentaAhorro> list = new List<CuentaAhorro>();
+            foreach (CuentaAhorro item in cuentas)
+            {
+                if (item.cedula.Equals(cedula))
+                {
+                    list.Add(item);
+                }
+            }
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(list));
+        }
 
         [WebMethod]
         public void getSeguros(string cedula)
