@@ -1,4 +1,70 @@
 ﻿<div class="page-header">
-    <h1>Editar Cliente Jurídico</h1>
+    <h1>Editar Sociedad Anónima</h1>
 </div>
 <br />
+
+<form ng-submit="fillSpaces()">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="cedula">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br />
+<br />
+
+<form class="form-horizontal" role="form" ng-submit="submitForm()">
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="CedulaReturned"><b>Ced Juridica:</b></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="CedulaReturned" placeholder="Cédula" ng-model="CedulaReturned" readonly>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="cedRep">Ced Representante:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="cedRep" placeholder="Digite cédula" ng-model="cedRep" required>
+        </div>
+    </div>
+
+
+ <div class="form-group">
+        <label class="control-label col-sm-2" for="nombrerep">Nombre Empresa:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombrerep" placeholder="Digite nombre" ng-model="nombrerep" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Correo">Correo Empresa:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Correo" placeholder="Digite correo empresarial" ng-model="Correo" required>
+        </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="Password">Password </label>
+    <div class="col-sm-10">
+        <input type="Password" class="form-control" id="Password" placeholder="Digite nuevo password" ng-model="Password" >
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-disabled="disabled">Guardar Cambios</button>
+        </div>
+
+
+    </div>
+</form>

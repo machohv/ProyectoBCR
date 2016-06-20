@@ -12,19 +12,14 @@ namespace DataAccess
   public class DAOCuentaAhorro
     {
 
-        public Boolean addCuentaAhorro(int numero, int limite) {
+        public Boolean addCuentaAhorro(String ced ,string divisa,string balance) {
             try
             {
-                SqlCommand com = new SqlCommand("execute AddCuentaAhorro @numerocuenta = @num, @limite = @lim", DAO_CONNECTION_STRING.getConnectionInstance());
-                com.Parameters.AddWithValue("@num", numero);
-                com.Parameters.AddWithValue("@lim", limite);
-
+                SqlCommand com = new SqlCommand("execute addDebito @Cedula="+ced+",@Divisa= "+divisa+",@NumeroCuenta=0,@Balance="+balance+";", DAO_CONNECTION_STRING.getConnectionInstance());
                 DAO_CONNECTION_STRING.getConnectionInstance().Open();
                 com.ExecuteNonQuery();
                 DAO_CONNECTION_STRING.getConnectionInstance().Close();
                 return true;
-
-
             }
             catch (Exception)
             {
@@ -51,8 +46,8 @@ namespace DataAccess
             }
         }
 
-        public List<TOcuentaAhorro> getCuentaAhorro(int filter) {
-            SqlCommand com = new SqlCommand("execute getCuentaAhorro @numerocuenta= @filter", DAO_CONNECTION_STRING.getConnectionInstance());
+        public List<TOcuentaAhorro> getCuentaAhorro(string filter) {
+            SqlCommand com = new SqlCommand("select c.numero_cuenta, numero_sinpe,balance,saldo_bloqueado, saldo_congelado, divisa, cedula from cuenta as c join debito as d on c.numero_cuenta = d.numero_cuenta where cedula ="+filter+";", DAO_CONNECTION_STRING.getConnectionInstance());
             com.Parameters.AddWithValue("@filter", filter);
             List<TOcuentaAhorro> list = new List<TOcuentaAhorro>();
             DataTable dt = new DataTable();
@@ -62,7 +57,24 @@ namespace DataAccess
 
             foreach (DataRow item in dt.Rows)
             {
-                list.Add(new TOcuentaAhorro(int.Parse(item[0].ToString()), int.Parse(item[0].ToString())));
+                list.Add(new TOcuentaAhorro(item[0].ToString(), item[1].ToString(), item[2].ToString(), item[3].ToString(), item[4].ToString(), item[5].ToString(), item[6].ToString()));
+            }
+            return list;
+        }
+
+        public List<TOcuentaAhorro> getCuentasAhorro()
+        {
+            SqlCommand com = new SqlCommand("select c.numero_cuenta, numero_sinpe,balance,saldo_bloqueado, saldo_congelado, divisa, cedula from cuenta as c join debito as d on c.numero_cuenta = d.numero_cuenta", DAO_CONNECTION_STRING.getConnectionInstance());
+          
+            List<TOcuentaAhorro> list = new List<TOcuentaAhorro>();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = com;
+            adapter.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                list.Add(new TOcuentaAhorro(item[0].ToString(), item[1].ToString(), item[2].ToString(), item[3].ToString(), item[4].ToString(), item[5].ToString(), item[6].ToString()));
             }
             return list;
         }

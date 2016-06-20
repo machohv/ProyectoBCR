@@ -10,7 +10,7 @@
                 "' , cedularep:'" + $scope.cedularep +
                 "' , nombrerep:'" + $scope.nombrerep +
                 "'}",
-            //(string cedula, string correo, string password, string cedularep, string nombrerep) 
+          
             headers: {
                 "Content-Type": "application/json"
             }

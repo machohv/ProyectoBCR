@@ -13,7 +13,6 @@
              $scope.disabled = false;
          })
     }
-
     $scope.submitForm = function () {
         $http({
             url: "WebService.asmx/EditPersona",
@@ -40,4 +39,5 @@
         });
 
     }
+
 });

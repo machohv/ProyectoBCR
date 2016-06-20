@@ -65,7 +65,7 @@ namespace DataAccess
 
 
             // Console.WriteLine(new DAOSociedadAnonima().addSociedadAnonima("324234234","MOURRAILLE@ME.COM","MAURIPASSWORD","115620847","MAURICIO MOURRAILLE ROJAS"));
-          //  new DAOSociedadAnonima().deleteSociedadAnonima("324234234");
+            //  new DAOSociedadAnonima().deleteSociedadAnonima("324234234");
         }
     }
 }

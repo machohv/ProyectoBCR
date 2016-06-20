@@ -1,4 +1,52 @@
 ﻿<div class="page-header">
-    <h1>Ver Cuentas Empresariales</h1>
+    <h1>Ver cuentas empresariales</h1>
 </div>
-<br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>No Cuenta</th>
+                <th>No SINPE</th>
+                <th>Divisa</th>
+              
+                <th>Seguro</th>
+                <th>Cedula</th>
+                <th>Nombre Empresa</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="cuenta in cuentas | filter: searchStr">
+                <td>{{cuenta.NumeroCuenta}}</td>
+                <td>{{cuenta.NumeroSinpe}}</td>
+                <td>{{cuenta.Divisa}}</td>
+             
+                <td>{{cuenta.SEGURO}}</td>
+                <td>{{cuenta.CEDULA}}</td>
+                <td>{{cuenta.NombrePropietario}}</td>
+
+               
+
+                <td>
+                    <!--<button class="btn btn-danger" ng-click="deletePersona(persona)">X</button>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<input type="text" required ng-model="newPersona" />
+    <a href="#" class="btn btn-primary" ng-click="addPersona()">Add Persona</a>-->
+</div>

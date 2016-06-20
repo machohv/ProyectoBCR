@@ -41,6 +41,18 @@ namespace BusinessLogic
             return list2;
         }
 
+        public SociedadAnonima getSociedadAnonima(string id)
+        {
+            List<TransferObjects.TOSociedadAnonima> list = new DAOSociedadAnonima().getSociedadAnonima(id);
+            List<SociedadAnonima> list2 = new List<SociedadAnonima>();
+            foreach (TransferObjects.TOSociedadAnonima item in list)
+            {
+                list2.Add(new SociedadAnonima(item.CEDULA, item.CEDULAREPRESENTANTE, item.NOMBREREPRESENTANTE, item.correo));
+            }
+
+            return list2.ElementAt(0);
+        }
+
         public Boolean addSociedadAnonima(String ced, String mail, string password, String cedrep, String nomrep)
         {
             return new DAOSociedadAnonima().addSociedadAnonima(ced, mail, password, cedrep, nomrep);
