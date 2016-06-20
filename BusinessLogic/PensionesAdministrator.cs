@@ -11,9 +11,9 @@ namespace BusinessLogic
     public class PensionesAdministrator
     {
         private DAOPensiones daoPension = new DAOPensiones();
-        public Pensiones getPension(string cedula)
+        public Pensiones getPension(string CodigoPension)
         {
-            TOPensiones p = daoPension.getPension(cedula);
+            TOPensiones p = daoPension.getPension(CodigoPension);
             if (p != null)
             {
                 return new Pensiones
@@ -45,12 +45,28 @@ namespace BusinessLogic
             return retorno;
         }
 
+        public List<Pensiones> getPensiones(string cedula)
+        {
+            List<Pensiones> retorno = new List<Pensiones>();
+            List<TOPensiones> listTO = daoPension.getPensiones(cedula);
+            foreach (TOPensiones p in listTO)
+            {
+                retorno.Add(new Pensiones
+                {
+                    CodigoPension = p.CodigoPension,
+                    Cedula = p.Cedula,
+                    TipoPension = p.TipoPension,
+                    ValorPension = p.ValorPension
+
+                });
+            }
+            return retorno;
+        }
         public void AddPension(Pensiones p)
         {
                        
             daoPension.AddPension(new TOPensiones
             {
-                CodigoPension = p.CodigoPension,
                 Cedula = p.Cedula,
                 TipoPension = p.TipoPension,
                 ValorPension = p.ValorPension
@@ -63,9 +79,9 @@ namespace BusinessLogic
             daoPension.updatePension(convertToTOPensiones(p));
         }
 
-        public void deletePension(string cedula)
+        public void deletePension(string CodigoPension)
         {
-            daoPension.deletePension(cedula);
+            daoPension.deletePension(CodigoPension);
         }
 
         public TOPensiones convertToTOPensiones(Pensiones p)

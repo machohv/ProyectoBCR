@@ -14,11 +14,11 @@ namespace DataAccess
     {
 
         private SqlConnection connection = new SqlConnection(DataAccess.Properties.Settings.Default.ConnectionString);
-        public TOSeguro getSeguro(string cedula)
+        public TOSeguro getSeguro(string CodigoSeguro)
         {
             SqlCommand command = new SqlCommand("getSeguro", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@Cedula", cedula);
+            command.Parameters.AddWithValue("@CodigoSeguro", CodigoSeguro);
             SqlDataReader reader;
 
             if (connection.State != ConnectionState.Open)
@@ -50,7 +50,7 @@ namespace DataAccess
 
         public List<TOSeguro> getSeguros()
         {
-            SqlCommand command = new SqlCommand("getSeguro", connection);
+            SqlCommand command = new SqlCommand("getSeguros", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             SqlDataReader reader;
 
@@ -80,12 +80,43 @@ namespace DataAccess
             return seguros;
         }
 
+        public List<TOSeguro> getSeguros(string cedula)
+        {
+            SqlCommand command = new SqlCommand("getSeguros", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Cedula", cedula);
+            SqlDataReader reader;
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            reader = command.ExecuteReader();
+            List<TOSeguro> seguros = new List<TOSeguro>();
+
+            while (reader.Read())
+            {
+                seguros.Add(new TOSeguro
+                {
+                    CodigoSeguro = int.Parse(reader["CodigoSeguro"].ToString()),
+                    Cedula = reader["Cedula"].ToString(),
+                    TipoSeguro = reader["TipoSeguro"].ToString(),
+                    Asegurado = reader["Asegurado"].ToString(),
+                    ValorSeguro = double.Parse(reader["ValorSeguro"].ToString())
+                });
+            }
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+            return seguros;
+        }
 
         public void AddSeguro(TOSeguro e)
         {
             SqlCommand command = new SqlCommand("AddSeguro", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CodigoSeguro", e.CodigoSeguro);
             command.Parameters.AddWithValue("@Cedula", e.Cedula);
             command.Parameters.AddWithValue("@TipoSeguro", e.TipoSeguro);
             command.Parameters.AddWithValue("@Asegurado", e.Asegurado);
@@ -133,11 +164,11 @@ namespace DataAccess
         }
 
 
-        public void deleteSeguro(string cedula)
+        public void deleteSeguro(string CodigoSeguro)
         {
             SqlCommand command = new SqlCommand("DeleteSeguro", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@Cedula", cedula);
+            command.Parameters.AddWithValue("@CodigoSeguro", CodigoSeguro);
 
 
 
