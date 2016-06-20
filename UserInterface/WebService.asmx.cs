@@ -22,6 +22,8 @@ namespace UserInterface
     {
         private PersonasAdministrator administratorPersonas = new PersonasAdministrator();
         private CuentaCreditoPersonalAdministrator administradorCuentaPersonal = new CuentaCreditoPersonalAdministrator();
+        private PensionesAdministrator administradorPension = new PensionesAdministrator();
+        private SeguroAdministrator administradorSeguro = new SeguroAdministrator();
 
         [WebMethod]
         public string HelloWorld(string firstName)
@@ -30,7 +32,7 @@ namespace UserInterface
         }
 
         [WebMethod]
-        public string AddPersona(string cedula, string correo, string password,
+        public string AddPersona(string cedula, string correo, string password, 
             string primerNombre, string segundoNombre, string primerApellido,
             string segundoApellido, string profesion, string telefono, string celular,
             string provincia, string canton, string distrito, string direccionExacta)
@@ -188,6 +190,131 @@ namespace UserInterface
             return " Se ha eliminado la cuenta exitosamente";
 
         }
+
+        [WebMethod]
+        public string AddPension(int codigoPension, string cedula, string tipoPension, double valorPension)
+        {
+            administradorPension.AddPension(new Pensiones
+            {
+                CodigoPension = codigoPension,
+                Cedula = cedula,
+                TipoPension = tipoPension,
+                ValorPension = valorPension
+            
+            });
+
+            return " Se ha añadido a  " + codigoPension + " " + cedula + " " +
+                tipoPension + " " + valorPension + " exitosamente";
+
+        }
+
+        [WebMethod]
+        public void getAllPensiones()
+        {
+            List<Pensiones> pensiones = administradorPension.getPensiones();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(pensiones));
+        }
+
+        [WebMethod]
+        public void getPension(string cedula)
+        {
+            Pensiones pension = administradorPension.getPension(cedula);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(pension));
+        }
+
+        [WebMethod]
+        public string EditPension(int codigoPension, string cedula, string tipoPension, double valorPension)
+        {
+            administradorPension.EditPension(new Pensiones
+            {
+                CodigoPension = codigoPension,
+                Cedula = cedula,
+                TipoPension = tipoPension,
+                ValorPension = valorPension
+            });
+
+            return " Se ha editado a " + codigoPension + " " + cedula + " " +
+                tipoPension + " " + valorPension + " exitosamente";
+
+        }
+
+        [WebMethod]
+        public string DeletePension(string cedula)
+        {
+            administradorPension.deletePension(cedula);
+
+            return " Se ha eliminado exitosamente";
+
+        }
+
+        [WebMethod]
+        public string AddSeguro(int codigoSeguro, string cedula, string tipoSeguro, string asegurado, double valorSeguro)
+        {
+            administradorSeguro.AddSeguro(new Seguro
+            {
+                CodigoSeguro = codigoSeguro,
+                Cedula = cedula,
+                TipoSeguro = tipoSeguro,
+                Asegurado = asegurado,
+                ValorSeguro = valorSeguro
+
+            });
+
+            return " Se ha añadido a  " + codigoSeguro + " " + cedula + " " +
+                tipoSeguro + " " + asegurado + " " + valorSeguro + " exitosamente";
+
+        }
+
+        [WebMethod]
+        public void getAllSeguros()
+        {
+            List<Seguro> seguros = administradorSeguro.getSeguros();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(seguros));
+        }
+
+        [WebMethod]
+        public void getSeguro(string cedula)
+        {
+            Seguro seguro = administradorSeguro.getSeguro(cedula);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(seguro));
+        }
+
+
+
+
+        [WebMethod]
+        public string EditSeguro(int codigoSeguro, string cedula, string tipoSeguro, string asegurado, double valorSeguro)
+        {
+            administradorSeguro.EditSeguro(new Seguro
+            {
+                CodigoSeguro = codigoSeguro,
+                Cedula = cedula,
+                TipoSeguro = tipoSeguro,
+                Asegurado = asegurado,
+                ValorSeguro = valorSeguro
+            });
+
+            return " Se ha editado a " + codigoSeguro + " " + cedula + " " +
+                tipoSeguro + " " + asegurado + " " + valorSeguro + " exitosamente";
+        }
+
+
+        [WebMethod]
+        public string DeleteSeguro(string cedula)
+        {
+            administradorSeguro.deleteSeguro(cedula);
+
+            return " Se ha eliminado exitosamente";
+
+        }
         [WebMethod]
         public void getSociedadesAnonimas(String id)
         {
@@ -220,7 +347,7 @@ namespace UserInterface
             new SociedadAnonima().updateSociedad(cedula, correo, password, cedularep, nombrerep);
             return "Se editó exitosamente la empresa identificada por: " + cedula;
 
-        }
+    }
 
         [WebMethod]
         public string addCuentaEmpresarial(string divisa, string taza, string cedula, string tarjeta, string meses)

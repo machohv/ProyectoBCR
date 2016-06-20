@@ -2,3 +2,42 @@
     <h1>Tarjetas de Crédito</h1>
 </div>
 <br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Tarjeta</th>
+                <th>Tipo</th>
+                <th>Imagen</th>
+                <th>Casa Matriz</th>
+                <th>CVV</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="tarjeta in tarjetas | filter: searchStr">
+                <td>{{tarjeta.NumeroTarjeta}}</td>
+                <td>{{tarjeta.Descripcion}}</td>
+                <td>
+                    <img src="{{tarjeta.imgSrc}}" />
+                </td>
+                <td>{{tarjeta.CasaMatriz}}</td>
+                <td>{{tarjeta.CVV}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

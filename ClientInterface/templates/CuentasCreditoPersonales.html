@@ -41,11 +41,11 @@
                 <td>{{cuenta.SaldoBloqueado}}</td>
                 <td>{{cuenta.SaldoCongelado}}</td>
                 <td>{{cuenta.Divisa}}</td>
-                <td>{{cuenta.Taza}}</td>
-                <td>{{cuenta.FechaCorte}}</td>
+                <td>{{cuenta.Taza + "%"}}</td>
+                <td>{{cuenta.FechaCorte.slice(6, -2) | date:'dd/MM/yyyy'}}</td>
                 <td>{{cuenta.Categoria}}</td>
                 <td>{{cuenta.Millas}}</td>
-                <td>{{cuenta.FechaRenovacion}}</td>
+                <td>{{cuenta.FechaRenovacion.slice(6, -2) | date:'dd/MM/yyyy'}}</td>
             </tr>
         </tbody>
     </table>

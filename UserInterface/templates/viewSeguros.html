@@ -1,4 +1,52 @@
 ﻿<div class="page-header">
     <h1>Ver Seguros</h1>
 </div>
-<br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Codigo Seguro</th>
+                <th>Cedula</th>
+                <th>Tipo Seguro</th>
+                <th>Asegurado</th>
+                <th>Valor Seguro</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="seguro in seguros | filter: searchStr">
+
+                <td>{{seguro.CodigoSeguro}}</td>
+                <td>{{seguro.Cedula}}</td>
+                <td>{{seguro.TipoSeguro}}</td>
+                <td>
+                    {{
+seguro.Asegurado</td>
+                <td>{{seguro.ValorSeguro
+                    }}
+                </td>
+
+                <td>
+                    <!--<button class="btn btn-danger" ng-click="deleteSeguro(seguro)">X</button>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<input type="text" required ng-model="newSeguro" />
+    <a href="#" class="btn btn-primary" ng-click="addSeguro()">Add Seguro</a>-->
+</div>

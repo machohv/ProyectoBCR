@@ -1,4 +1,46 @@
 ﻿<div class="page-header">
     <h1>Ver Pensiones</h1>
 </div>
-<br />
+<div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="searchStr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Codigo Pension</th>
+                <th>Cedula</th>
+                <th>Tipo Pension</th>
+                <th>Valor Pension</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="pension in pensiones | filter: searchStr">
+
+                <td>{{pension.CodigoPension}}</td>
+                <td>{{pension.Cedula}}</td>
+                <td>{{pension.TipoPension}}</td>
+                <td>{{pension.ValorPension}}</td>
+
+                <td>
+                    <!--<button class="btn btn-danger" ng-click="deletePersona(persona)">X</button>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<input type="text" required ng-model="newPension" />
+    <a href="#" class="btn btn-primary" ng-click="addPension()">Add Pension</a>-->
+</div>

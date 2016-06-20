@@ -25,11 +25,7 @@
                 {
                     name: "Tarjetas de Crédito",
                     url: "#/TarjetasCredito"
-                },
-                 {
-                     name: "Tarjetas de Débito",
-                     url: "#/TarjetasDebito"
-                 }
+                }
             ]
         },
         {
