@@ -47,7 +47,7 @@ namespace BusinessLogic
 
         public void AddPension(Pensiones p)
         {
-                       
+
             daoPension.AddPension(new TOPensiones
             {
                 CodigoPension = p.CodigoPension,

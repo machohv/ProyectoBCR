@@ -22,8 +22,8 @@ namespace UserInterface
     {
         private PersonasAdministrator administratorPersonas = new PersonasAdministrator();
         private CuentaCreditoPersonalAdministrator administradorCuentaPersonal = new CuentaCreditoPersonalAdministrator();
-        private PensionesAdministrator administradorPension = new PensionesAdministrator();
-        private SeguroAdministrator administradorSeguro = new SeguroAdministrator();
+       private PensionesAdministrator administradorPension = new PensionesAdministrator();
+       private SeguroAdministrator administradorSeguro = new SeguroAdministrator();
 
         [WebMethod]
         public string HelloWorld(string firstName)

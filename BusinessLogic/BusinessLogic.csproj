@@ -60,11 +60,13 @@
     <Compile Include="Entidad.cs" />
     <Compile Include="EntidadAdministrator.cs" />
     <Compile Include="Pensiones.cs" />
+    <Compile Include="PensionesAdministrator.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PersonasAdministrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguro.cs" />
+    <Compile Include="SeguroAdministrator.cs" />
     <Compile Include="SociedadAnonima.cs" />
     <Compile Include="Tarjeta.cs" />
     <Compile Include="Telefono.cs" />
