@@ -192,19 +192,17 @@ namespace UserInterface
         }
 
         [WebMethod]
-        public string AddPension(int codigoPension, string cedula, string tipoPension, double valorPension)
+        public string AddPension(string cedula, string tipoPension, string valorPension)
         {
             administradorPension.AddPension(new Pensiones
             {
-                CodigoPension = codigoPension,
                 Cedula = cedula,
                 TipoPension = tipoPension,
-                ValorPension = valorPension
+                ValorPension = double.Parse(valorPension)
             
             });
 
-            return " Se ha añadido a  " + codigoPension + " " + cedula + " " +
-                tipoPension + " " + valorPension + " exitosamente";
+            return " Se ha añadido a la pension exitosamente";
 
         }
 
@@ -218,54 +216,51 @@ namespace UserInterface
         }
 
         [WebMethod]
-        public void getPension(string cedula)
+        public void getPension(string codigoPension)
         {
-            Pensiones pension = administradorPension.getPension(cedula);
+            Pensiones pension = administradorPension.getPension(codigoPension);
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(pension));
         }
 
         [WebMethod]
-        public string EditPension(int codigoPension, string cedula, string tipoPension, double valorPension)
+        public string EditPension(string codigoPension, string cedula, string tipoPension, string valorPension)
         {
             administradorPension.EditPension(new Pensiones
             {
-                CodigoPension = codigoPension,
+                CodigoPension = int.Parse(codigoPension),
                 Cedula = cedula,
                 TipoPension = tipoPension,
-                ValorPension = valorPension
+                ValorPension = double.Parse(valorPension)
             });
 
-            return " Se ha editado a " + codigoPension + " " + cedula + " " +
-                tipoPension + " " + valorPension + " exitosamente";
+            return " Se ha editado a pension exitosamente";
 
         }
 
         [WebMethod]
-        public string DeletePension(string cedula)
+        public string DeletePension(string codigoPension)
         {
-            administradorPension.deletePension(cedula);
+            administradorPension.deletePension(codigoPension);
 
-            return " Se ha eliminado exitosamente";
+            return " Se ha eliminado la pension exitosamente";
 
         }
 
         [WebMethod]
-        public string AddSeguro(int codigoSeguro, string cedula, string tipoSeguro, string asegurado, double valorSeguro)
+        public string AddSeguro(string cedula, string tipoSeguro, string asegurado, string valorSeguro)
         {
             administradorSeguro.AddSeguro(new Seguro
             {
-                CodigoSeguro = codigoSeguro,
                 Cedula = cedula,
                 TipoSeguro = tipoSeguro,
                 Asegurado = asegurado,
-                ValorSeguro = valorSeguro
+                ValorSeguro = double.Parse(valorSeguro)
 
             });
 
-            return " Se ha añadido a  " + codigoSeguro + " " + cedula + " " +
-                tipoSeguro + " " + asegurado + " " + valorSeguro + " exitosamente";
+            return " Se ha añadido el seguro exitosamente";
 
         }
 
@@ -279,9 +274,9 @@ namespace UserInterface
         }
 
         [WebMethod]
-        public void getSeguro(string cedula)
+        public void getSeguro(string CodigoSeguro)
         {
-            Seguro seguro = administradorSeguro.getSeguro(cedula);
+            Seguro seguro = administradorSeguro.getSeguro(CodigoSeguro);
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(seguro));
@@ -291,26 +286,25 @@ namespace UserInterface
 
 
         [WebMethod]
-        public string EditSeguro(int codigoSeguro, string cedula, string tipoSeguro, string asegurado, double valorSeguro)
+        public string EditSeguro(string codigoSeguro, string cedula, string tipoSeguro, string asegurado, string valorSeguro)
         {
             administradorSeguro.EditSeguro(new Seguro
             {
-                CodigoSeguro = codigoSeguro,
+                CodigoSeguro = int.Parse(codigoSeguro),
                 Cedula = cedula,
                 TipoSeguro = tipoSeguro,
                 Asegurado = asegurado,
-                ValorSeguro = valorSeguro
+                ValorSeguro = double.Parse(valorSeguro)
             });
 
-            return " Se ha editado a " + codigoSeguro + " " + cedula + " " +
-                tipoSeguro + " " + asegurado + " " + valorSeguro + " exitosamente";
+            return " Se ha editado el seguro exitosamente";
         }
 
 
         [WebMethod]
-        public string DeleteSeguro(string cedula)
+        public string DeleteSeguro(string CodigoSeguro)
         {
-            administradorSeguro.deleteSeguro(cedula);
+            administradorSeguro.deleteSeguro(CodigoSeguro);
 
             return " Se ha eliminado exitosamente";
 

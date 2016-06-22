@@ -14,11 +14,11 @@ namespace DataAccess
     {
 
         private SqlConnection connection = new SqlConnection(DataAccess.Properties.Settings.Default.ConnectionString);
-        public TOPensiones getPension(string cedula)
+        public TOPensiones getPension(string CodigoPension)
         {
             SqlCommand command = new SqlCommand("getPension", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@Cedula", cedula);
+            command.Parameters.AddWithValue("@CodigoPension", CodigoPension);
             SqlDataReader reader;
 
             if (connection.State != ConnectionState.Open)
@@ -49,7 +49,7 @@ namespace DataAccess
 
         public List<TOPensiones> getPensiones()
         {
-            SqlCommand command = new SqlCommand("getPension", connection);
+            SqlCommand command = new SqlCommand("getPensiones", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             SqlDataReader reader;
 
@@ -78,12 +78,42 @@ namespace DataAccess
             return pensiones;
         }
 
+        public List<TOPensiones> getPensiones(string cedula)
+        {
+            SqlCommand command = new SqlCommand("getPensionesCliente", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Cedula", cedula);
+            SqlDataReader reader;
+
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            reader = command.ExecuteReader();
+            List<TOPensiones> pensiones = new List<TOPensiones>();
+
+            while (reader.Read())
+            {
+                pensiones.Add(new TOPensiones
+                {
+                    CodigoPension = int.Parse(reader["CodigoPension"].ToString()),
+                    Cedula = reader["Cedula"].ToString(),
+                    TipoPension = reader["TipoPension"].ToString(),
+                    ValorPension = double.Parse(reader["ValorPension"].ToString())
+                });
+            }
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
+            }
+            return pensiones;
+        }
 
         public void AddPension(TOPensiones e)
         {
             SqlCommand command = new SqlCommand("AddPension", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CodigoPension", e.CodigoPension);
             command.Parameters.AddWithValue("@Cedula", e.Cedula);
             command.Parameters.AddWithValue("@TipoPension", e.TipoPension);           
             command.Parameters.AddWithValue("@ValorPension", e.ValorPension);
@@ -129,11 +159,11 @@ namespace DataAccess
         }
 
 
-        public void deletePension(string cedula)
+        public void deletePension(string CodigoPension)
         {
             SqlCommand command = new SqlCommand("DeletePension", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@Cedula", cedula);
+            command.Parameters.AddWithValue("@CodigoPension", CodigoPension);
 
 
 

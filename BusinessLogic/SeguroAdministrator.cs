@@ -11,9 +11,9 @@ namespace BusinessLogic
     public class SeguroAdministrator
     {
         private DAOSeguro daoSeguro = new DAOSeguro();
-        public Seguro getSeguro(string cedula)
+        public Seguro getSeguro(string CodigoSeguro)
         {
-            TOSeguro s = daoSeguro.getSeguro(cedula);
+            TOSeguro s = daoSeguro.getSeguro(CodigoSeguro);
             if (s != null)
             {
                 return new Seguro
@@ -47,12 +47,30 @@ namespace BusinessLogic
             return retorno;
         }
 
+        public List<Seguro> getSeguros(string cedula)
+        {
+            List<Seguro> retorno = new List<Seguro>();
+            List<TOSeguro> listTO = daoSeguro.getSeguros(cedula);
+            foreach (TOSeguro s in listTO)
+            {
+                retorno.Add(new Seguro
+                {
+                    CodigoSeguro = s.CodigoSeguro,
+                    Cedula = s.Cedula,
+                    TipoSeguro = s.TipoSeguro,
+                    Asegurado = s.Asegurado,
+                    ValorSeguro = s.ValorSeguro
+
+                });
+            }
+            return retorno;
+        }
+
         public void AddSeguro(Seguro s)
         {
 
             daoSeguro.AddSeguro(new TOSeguro
             {
-                CodigoSeguro = s.CodigoSeguro,
                 Cedula = s.Cedula,
                 TipoSeguro = s.TipoSeguro,
                 Asegurado = s.Asegurado,
@@ -66,9 +84,9 @@ namespace BusinessLogic
             daoSeguro.updateSeguro(convertToTOSeguro(s));
         }
 
-        public void deleteSeguro(string cedula)
+        public void deleteSeguro(string CodigoSeguro)
         {
-            daoSeguro.deleteSeguro(cedula);
+            daoSeguro.deleteSeguro(CodigoSeguro);
         }
 
         public TOSeguro convertToTOSeguro(Seguro s)

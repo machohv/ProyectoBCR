@@ -21,6 +21,8 @@ namespace ClientInterface
         private PersonasAdministrator administratorPersonas = new PersonasAdministrator();
         private CuentaCreditoPersonalAdministrator administradorCuentaPersonal = new CuentaCreditoPersonalAdministrator();
         private EntidadAdministrator administradorEntidades = new EntidadAdministrator();
+        private PensionesAdministrator administradorPension = new PensionesAdministrator();
+        private SeguroAdministrator administradorSeguro = new SeguroAdministrator();
 
         [WebMethod]
         public string HelloWorld(string firstName)
@@ -246,6 +248,24 @@ namespace ClientInterface
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(list));
+        }
+
+        [WebMethod]
+        public void getSeguros(string cedula)
+        {
+            List<Seguro> seguros = administradorSeguro.getSeguros(cedula);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(seguros));
+        }
+
+        [WebMethod]
+        public void getPensiones(string cedula)
+        {
+            List<Pensiones> pensiones = administradorPension.getPensiones(cedula);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(pensiones));
         }
     }
 }
